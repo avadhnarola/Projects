@@ -21,6 +21,7 @@ if(isset($_POST['submit'])){
     if($cnt == 1){
 
         $_SESSION['admin_id'] = $row['a_id'];
+        $_SESSION['admin_name'] = $row['a_name'];
     //     echo $_SESSION['admin_id'];
     //    die();
         header("location:dashboard.php");
