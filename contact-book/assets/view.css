@@ -1,0 +1,206 @@
+* {
+  padding: 0%;
+  margin: 0%;
+  box-sizing: border-box;
+}
+
+.table {
+  /* margin: auto; */
+  width: 100%;
+  margin-top: 7px;
+}
+
+.header th {
+  background-color: #45A14C;
+  color: white;
+  margin-top: 5px;
+}
+
+.main {
+  background-color: #fff;
+  width: 75%;
+  margin: auto;
+  border-radius: 10px;
+  padding: 40px 25px 20px 25px;
+  margin-top: 30px;
+}
+
+.fa-trash-can {
+  color: red;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+
+}
+
+
+/* From Uiverse.io by Peary74 */
+button {
+  font-family: inherit;
+  font-size: 20px;
+  background: #ff4122;
+  color: white;
+  fill: rgb(155, 153, 153);
+  padding: 5px 11px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  font-weight: 1000;
+}
+
+button span {
+  display: block;
+  margin-left: 0.3em;
+  transition: all 0.3s ease-in-out;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+button i {
+  display: block;
+  transform-origin: center center;
+  transition: transform 0.3s ease-in-out;
+  font-size: 20px;
+}
+
+.button1:hover {
+  background: #2b2929;
+}
+
+button:hover .svg-wrapper {
+  transform: scale(1.25);
+  transition: 0.5s linear;
+  transition-timing-function: ease;
+}
+
+button:hover i {
+  transform: translateX(1.5em) scale(1.05);
+  color: #007bff;
+}
+
+button:hover span {
+  opacity: 0;
+  transition: 0.5s linear;
+  display: block;
+}
+
+button:active {
+  transform: scale(0.95);
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* From Uiverse.io by 3bdel3ziz-T */
+.select {
+  width: fit-content;
+  cursor: pointer;
+  position: relative;
+  transition: 300ms;
+  color: white;
+  overflow: hidden;
+}
+
+.selected {
+  background-color: #2a2f3b;
+  padding: 5px;
+  margin-bottom: 3px;
+  border-radius: 5px;
+  position: relative;
+  z-index: 100000;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.arrow {
+  position: relative;
+  right: 0px;
+  height: 10px;
+  transform: rotate(-90deg);
+  width: 25px;
+  fill: white;
+  z-index: 100000;
+  transition: 300ms;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  padding: 5px;
+  background-color: #2a2f3b;
+  position: relative;
+  top: -100px;
+  opacity: 0;
+  transition: 300ms;
+}
+
+.select:hover>.options {
+  opacity: 1;
+  top: 0;
+}
+
+.select:hover>.selected .arrow {
+  transform: rotate(0deg);
+}
+
+.option {
+  border-radius: 5px;
+  padding: 5px;
+  transition: 300ms;
+  background-color: #2a2f3b;
+  width: 150px;
+  font-size: 15px;
+}
+
+.option:hover {
+  background-color: #323741;
+}
+
+.options input[type="radio"] {
+  display: none;
+}
+
+.options label {
+  display: inline-block;
+}
+
+.options label::before {
+  content: attr(data-txt);
+}
+
+.options input[type="radio"]:checked+label {
+  display: none;
+}
+
+.options input[type="radio"]#all:checked+label {
+  display: none;
+}
+
+.select:has(.options input[type="radio"]#all:checked) .selected::before {
+  content: attr(data-default);
+}
+
+.select:has(.options input[type="radio"]#option-1:checked) .selected::before {
+  content: attr(data-one);
+}
+
+.select:has(.options input[type="radio"]#option-2:checked) .selected::before {
+  content: attr(data-two);
+}
+
+.select:has(.options input[type="radio"]#option-3:checked) .selected::before {
+  content: attr(data-three);
+}
+.filter{
+  display: flex;
+}
