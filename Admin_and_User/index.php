@@ -1,20 +1,18 @@
 <?php
 $conn = mysqli_connect('localhost', 'root', '', 'first-project');
 
-$images = mysqli_query($conn, "select * from slider");
-// print_r($images);
+	$data = mysqli_query($conn, "select * from slider ORDER BY id DESC LIMIT 3");
 
+	// while($row=mysqli_fetch_assoc($data)){
 
-while ($row = mysqli_fetch_assoc($images)) {
+	// 	// echo "<pre>";
+	// 	// print_r($row);
+	// }
 
-	foreach ($images as $key => $img) {
-		$data = explode(",", $row['image']);
-		// echo $key;
-		// print_r($data);
-	}
-}
 
 // die();
+
+
 ?>
 
 
@@ -103,64 +101,82 @@ while ($row = mysqli_fetch_assoc($images)) {
 					<div class="fullwidthbanner-container">
 						<div class="fullwidthbanner">
 							<ul>
+							<?php 
+                                // Loop through the fetched data and display each image in the slider
+                                while ($row = mysqli_fetch_assoc($data)) { 
+                                ?>
 								<li class="first-slide" data-transition="fade" data-slotamount="10"
 									data-masterspeed="300">
 
-									<img src="admin/pages/images/<?php echo $data[$key] ?>" data-fullwidthcentering="on"
+									<img src="admin/pages/images/<?php echo $row['image'] ?>" data-fullwidthcentering="on"
 									alt="slide">
 									<div class="tp-caption first-line lft tp-resizeme start" data-x="center"
 										data-hoffset="0" data-y="250" data-speed="1000" data-start="200"
 										data-easing="Power4.easeOut" data-splitin="none" data-splitout="none"
-										data-elementdelay="0" data-endelementdelay="0">YOM-DOWNLOAD ANYTHING</div>
+										data-elementdelay="0" data-endelementdelay="0"><?php echo $row['title'] ?></div>
 									<div class="tp-caption second-line lfb tp-resizeme start" data-x="center"
 										data-hoffset="0" data-y="340" data-speed="1000" data-start="800"
 										data-easing="Power4.easeOut" data-splitin="none" data-splitout="none"
-										data-elementdelay="0" data-endelementdelay="0">From Yom you can download
-										anything for free</div>
+										data-elementdelay="0" data-endelementdelay="0"><?php echo $row['discription']; ?></div>
 									<div class="tp-caption slider-btn sfb tp-resizeme start" data-x="center"
 										data-hoffset="0" data-y="510" data-speed="1000" data-start="2200"
 										data-easing="Power4.easeOut" data-splitin="none" data-splitout="none"
 										data-elementdelay="0" data-endelementdelay="0"><a href="#"
 											class="btn btn-slider">Discover More</a></div>
 								</li>
+								<?php 
+                                } 
+                                ?>
+								<?php 
+                                // Loop through the fetched data and display each image in the slider
+                                while ($row = mysqli_fetch_assoc($data)) { 
+                                ?>
 								<li class="first-slide" data-transition="fade" data-slotamount="10"
 									data-masterspeed="300">
-									<img src="admin/pages/images/<?php echo $data[1]; ?>" data-fullwidthcentering="on"
+									<img src="admin/pages/images/<?php echo $row['image'] ?>" data-fullwidthcentering="on"
 										alt="slide">
 									<div class="tp-caption first-line lft tp-resizeme start" data-x="center"
 										data-hoffset="0" data-y="250" data-speed="1000" data-start="200"
 										data-easing="Power4.easeOut" data-splitin="none" data-splitout="none"
-										data-elementdelay="0" data-endelementdelay="0">Create a Multi Author Blog</div>
+										data-elementdelay="0" data-endelementdelay="0"><?php echo $row['title'] ?></div>
 									<div class="tp-caption second-line lfb tp-resizeme start" data-x="center"
 										data-hoffset="0" data-y="340" data-speed="1000" data-start="800"
 										data-easing="Power4.easeOut" data-splitin="none" data-splitout="none"
-										data-elementdelay="0" data-endelementdelay="0">Using Yom you can create multi
-										author Blog platform</div>
+										data-elementdelay="0" data-endelementdelay="0"><?php echo $row['discription']; ?></div>
 									<div class="tp-caption slider-btn sfb tp-resizeme start" data-x="center"
 										data-hoffset="0" data-y="510" data-speed="1000" data-start="2200"
 										data-easing="Power4.easeOut" data-splitin="none" data-splitout="none"
 										data-elementdelay="0" data-endelementdelay="0"><a href="#"
 											class=" second-btn btn btn-slider">Discover More</a></div>
 								</li>
+								<?php 
+                                } 
+                                ?>
+								<?php 
+                                // Loop through the fetched data and display each image in the slider
+                                while ($row = mysqli_fetch_assoc($data)) { 
+                                ?>
 								<li class="first-slide" data-transition="fade" data-slotamount="10"
 									data-masterspeed="300">
-									<img src="admin/pages/images/<?php echo $data[2]; ?>" data-fullwidthcentering="on"
+									<img src="admin/pages/images/<?php echo $row['image'] ?>" data-fullwidthcentering="on"
 										alt="slide">
 									<div class="tp-caption first-line lft tp-resizeme start" data-x="center"
 										data-hoffset="0" data-y="250" data-speed="1000" data-start="200"
 										data-easing="Power4.easeOut" data-splitin="none" data-splitout="none"
-										data-elementdelay="0" data-endelementdelay="0">Create an E-commerce Site</div>
+										data-elementdelay="0" data-endelementdelay="0"><?php echo $row['title'] ?></div>
 									<div class="tp-caption second-line lfb tp-resizeme start" data-x="center"
 										data-hoffset="0" data-y="340" data-speed="1000" data-start="800"
 										data-easing="Power4.easeOut" data-splitin="none" data-splitout="none"
-										data-elementdelay="0" data-endelementdelay="0">Using Yom your can create a Multi
-										Author E-Commerce Website</div>
+										data-elementdelay="0" data-endelementdelay="0"><?php echo $row['discription']; ?></div>
 									<div class="tp-caption slider-btn sfb tp-resizeme start" data-x="center"
 										data-hoffset="0" data-y="510" data-speed="1000" data-start="2200"
 										data-easing="Power4.easeOut" data-splitin="none" data-splitout="none"
 										data-elementdelay="0" data-endelementdelay="0"><a href="#"
 											class="btn btn-slider">Discover More</a></div>
 								</li>
+								<?php 
+                                } 
+                                ?>
 							</ul>
 						</div>
 					</div>
