@@ -1,13 +1,13 @@
 <?php
 $conn = mysqli_connect('localhost', 'root', '', 'first-project');
 
-	$data = mysqli_query($conn, "select * from slider ORDER BY id DESC LIMIT 3");
+$data = mysqli_query($conn, "select * from slider ORDER BY id DESC LIMIT 3");
 
-	// while($row=mysqli_fetch_assoc($data)){
+// while($row=mysqli_fetch_assoc($data)){
 
-	// 	// echo "<pre>";
-	// 	// print_r($row);
-	// }
+// 	// echo "<pre>";
+// 	// print_r($row);
+// }
 
 
 // die();
@@ -101,82 +101,33 @@ $conn = mysqli_connect('localhost', 'root', '', 'first-project');
 					<div class="fullwidthbanner-container">
 						<div class="fullwidthbanner">
 							<ul>
-							<?php 
-                                // Loop through the fetched data and display each image in the slider
-                                while ($row = mysqli_fetch_assoc($data)) { 
-                                ?>
-								<li class="first-slide" data-transition="fade" data-slotamount="10"
-									data-masterspeed="300">
+								<?php
+								// Loop through the fetched data and display each image in the slider
+								while ($row = mysqli_fetch_assoc($data)) {
+									?>
+									<li class="first-slide" data-transition="fade" data-slotamount="10"
+										data-masterspeed="300">
 
-									<img src="admin/pages/images/<?php echo $row['image'] ?>" data-fullwidthcentering="on"
-									alt="slide">
-									<div class="tp-caption first-line lft tp-resizeme start" data-x="center"
-										data-hoffset="0" data-y="250" data-speed="1000" data-start="200"
-										data-easing="Power4.easeOut" data-splitin="none" data-splitout="none"
-										data-elementdelay="0" data-endelementdelay="0"><?php echo $row['title'] ?></div>
-									<div class="tp-caption second-line lfb tp-resizeme start" data-x="center"
-										data-hoffset="0" data-y="340" data-speed="1000" data-start="800"
-										data-easing="Power4.easeOut" data-splitin="none" data-splitout="none"
-										data-elementdelay="0" data-endelementdelay="0"><?php echo $row['discription']; ?></div>
-									<div class="tp-caption slider-btn sfb tp-resizeme start" data-x="center"
-										data-hoffset="0" data-y="510" data-speed="1000" data-start="2200"
-										data-easing="Power4.easeOut" data-splitin="none" data-splitout="none"
-										data-elementdelay="0" data-endelementdelay="0"><a href="#"
-											class="btn btn-slider">Discover More</a></div>
-								</li>
-								<?php 
-                                } 
-                                ?>
-								<?php 
-                                // Loop through the fetched data and display each image in the slider
-                                while ($row = mysqli_fetch_assoc($data)) { 
-                                ?>
-								<li class="first-slide" data-transition="fade" data-slotamount="10"
-									data-masterspeed="300">
-									<img src="admin/pages/images/<?php echo $row['image'] ?>" data-fullwidthcentering="on"
-										alt="slide">
-									<div class="tp-caption first-line lft tp-resizeme start" data-x="center"
-										data-hoffset="0" data-y="250" data-speed="1000" data-start="200"
-										data-easing="Power4.easeOut" data-splitin="none" data-splitout="none"
-										data-elementdelay="0" data-endelementdelay="0"><?php echo $row['title'] ?></div>
-									<div class="tp-caption second-line lfb tp-resizeme start" data-x="center"
-										data-hoffset="0" data-y="340" data-speed="1000" data-start="800"
-										data-easing="Power4.easeOut" data-splitin="none" data-splitout="none"
-										data-elementdelay="0" data-endelementdelay="0"><?php echo $row['discription']; ?></div>
-									<div class="tp-caption slider-btn sfb tp-resizeme start" data-x="center"
-										data-hoffset="0" data-y="510" data-speed="1000" data-start="2200"
-										data-easing="Power4.easeOut" data-splitin="none" data-splitout="none"
-										data-elementdelay="0" data-endelementdelay="0"><a href="#"
-											class=" second-btn btn btn-slider">Discover More</a></div>
-								</li>
-								<?php 
-                                } 
-                                ?>
-								<?php 
-                                // Loop through the fetched data and display each image in the slider
-                                while ($row = mysqli_fetch_assoc($data)) { 
-                                ?>
-								<li class="first-slide" data-transition="fade" data-slotamount="10"
-									data-masterspeed="300">
-									<img src="admin/pages/images/<?php echo $row['image'] ?>" data-fullwidthcentering="on"
-										alt="slide">
-									<div class="tp-caption first-line lft tp-resizeme start" data-x="center"
-										data-hoffset="0" data-y="250" data-speed="1000" data-start="200"
-										data-easing="Power4.easeOut" data-splitin="none" data-splitout="none"
-										data-elementdelay="0" data-endelementdelay="0"><?php echo $row['title'] ?></div>
-									<div class="tp-caption second-line lfb tp-resizeme start" data-x="center"
-										data-hoffset="0" data-y="340" data-speed="1000" data-start="800"
-										data-easing="Power4.easeOut" data-splitin="none" data-splitout="none"
-										data-elementdelay="0" data-endelementdelay="0"><?php echo $row['discription']; ?></div>
-									<div class="tp-caption slider-btn sfb tp-resizeme start" data-x="center"
-										data-hoffset="0" data-y="510" data-speed="1000" data-start="2200"
-										data-easing="Power4.easeOut" data-splitin="none" data-splitout="none"
-										data-elementdelay="0" data-endelementdelay="0"><a href="#"
-											class="btn btn-slider">Discover More</a></div>
-								</li>
-								<?php 
-                                } 
-                                ?>
+										<img src="admin/images/<?php echo $row['image'] ?>" data-fullwidthcentering="on"
+											alt="slide">
+										<div class="tp-caption first-line lft tp-resizeme start" data-x="center"
+											data-hoffset="0" data-y="250" data-speed="1000" data-start="200"
+											data-easing="Power4.easeOut" data-splitin="none" data-splitout="none"
+											data-elementdelay="0" data-endelementdelay="0"><?php echo $row['title'] ?></div>
+										<div class="tp-caption second-line lfb tp-resizeme start" data-x="center"
+											data-hoffset="0" data-y="340" data-speed="1000" data-start="800"
+											data-easing="Power4.easeOut" data-splitin="none" data-splitout="none"
+											data-elementdelay="0" data-endelementdelay="0">
+											<?php echo $row['description']; ?></div>
+										<div class="tp-caption slider-btn sfb tp-resizeme start" data-x="center"
+											data-hoffset="0" data-y="510" data-speed="1000" data-start="2200"
+											data-easing="Power4.easeOut" data-splitin="none" data-splitout="none"
+											data-elementdelay="0" data-endelementdelay="0"><a href="#"
+												class="btn btn-slider">Discover More</a></div>
+									</li>
+								<?php
+								}
+								?>
 							</ul>
 						</div>
 					</div>
