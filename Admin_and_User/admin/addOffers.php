@@ -11,25 +11,26 @@ if (!isset($_SESSION['admin_id'])) {
 
 if (isset($_GET['u_id'])) {
     $id = $_GET['u_id'];
-    $u_data = mysqli_query($conn, "select * from slider where id='$id'");
+    $u_data = mysqli_query($conn, "select * from offers where o_id='$id'");
     $u_data = mysqli_fetch_assoc($u_data);
 }
 
 if (isset($_POST['submit'])) {
 
-    $title = $_POST['title'];
-    $description = $_POST['description'];
-    $image = $_FILES['image']['name'];
-    move_uploaded_file($_FILES['image']['tmp_name'], "images/$image");
+    $icon = $_POST['o_icon'];
+    $title = $_POST['o_title'];
+    $description = $_POST['o_description'];
+   
+    
 
     if (isset($_GET['u_id'])) {
 
-        mysqli_query($conn, "update slider set title='$title',description='$description',image='$image' where id='$id'");
+        mysqli_query($conn, "update offers set  o_icon='$icon',o_title='$title',o_description='$description' where o_id='$id'");
 
     } else {
-        mysqli_query($conn, "insert into slider(title,description,image) values('$title','$description','$image')");
+        mysqli_query($conn, "insert into offers(o_icon,o_title,o_description) values('$icon','$title','$description')");
     }
-    header("location:addSlider.php");
+    header("location:addOffers.php");
 }
 ?>
 
@@ -40,12 +41,12 @@ if (isset($_POST['submit'])) {
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1>Add Slider Form</h1>
+                    <h1>Add Offers Form</h1>
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
                         <li class="breadcrumb-item"><a href="dashboard.php">Home</a></li>
-                        <li class="breadcrumb-item active">Slider Form</li>
+                        <li class="breadcrumb-item active">Offers Form</li>
                     </ol>
                 </div>
             </div>
@@ -61,30 +62,30 @@ if (isset($_POST['submit'])) {
                     <!-- general form elements -->
                     <div class="card card-primary">
                         <div class="card-header">
-                            <h3 class="card-title">Manage Slider</h3>
+                            <h3 class="card-title">Manage Offers</h3>
                         </div>
-                        <form method="POST" enctype="multipart/form-data">
+                        <form method="POST">
                             <div class="card-body">
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1" >Title</label>
+                                    <label for="exampleInputEmail1">Icon</label>
                                     <input type="text" class="form-control" id="exampleInputEmail1"
-                                        placeholder="Enter Title" name="title" value="<?php echo @$u_data['title']; ?>">
+                                        placeholder="Enter Icon Class Name" name="o_icon" value="<?php echo @$u_data['o_icon']; ?>">
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputPassword1" >Discription</label>
+                                    <label for="exampleInputPassword1">Title</label>
                                     <input type="text" class="form-control" id="exampleInputPassword1"
-                                        placeholder="Enter Discription" name="description" value="<?php echo @$u_data['description']; ?>">
+                                        placeholder="Enter Title" name="o_title"
+                                        value="<?php echo @$u_data['o_title']; ?>">
                                 </div>
+
                                 <div class="form-group">
-                                    <label for="exampleInputFile">File input</label>
-                                    <div class="input-group form-control">
-                                        <input type="file" id="exampleInputFile" name="image" value="<?php echo @$u_data['image']; ?>">
-
-                                    </div>
+                                    <label for="exampleInputPassword1">Discription</label>
+                                    <input type="text" class="form-control" id="exampleInputPassword1"
+                                        placeholder="Enter Discription" name="o_description"
+                                        value="<?php echo @$u_data['o_description']; ?>">
                                 </div>
+
                             </div>
-
-
                             <div class="card-footer">
                                 <button type="submit" class="btn btn-primary" name="submit">Submit</button>
                             </div>

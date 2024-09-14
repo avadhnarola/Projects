@@ -8,6 +8,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Admin Dashboard</title>    
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
@@ -247,7 +249,28 @@
                   <p>View Slider</p>
                 </a>
               </li>
-              
+            </ul>
+          <li class="nav-item menu-open">
+            <a href="#" class="nav-link bg-secondary">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Manage Offers
+                <i class="right fas fa-angle-left"></i>
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="addOffers.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Add Offers</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="viewOffers.php" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>View Offers</p>
+                </a>
+              </li>
             </ul>
         </ul>
       </nav>

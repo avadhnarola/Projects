@@ -1,7 +1,8 @@
 <?php
 $conn = mysqli_connect('localhost', 'root', '', 'first-project');
 
-$data = mysqli_query($conn, "select * from slider ORDER BY id DESC LIMIT 3");
+$sliderData = mysqli_query($conn, "select * from slider ORDER BY id DESC LIMIT 3");
+$offerData = mysqli_query($conn,"select * from offers ORDER BY o_id DESC LIMIT 3");
 
 // while($row=mysqli_fetch_assoc($data)){
 
@@ -38,6 +39,7 @@ $data = mysqli_query($conn, "select * from slider ORDER BY id DESC LIMIT 3");
 	<link rel="stylesheet" href="files/css/font-awesome.min.css">
 	<link rel="stylesheet" href="files/css/style.css">
 	<link rel="stylesheet" href="files/rs-plugin/css/settings.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
 	<!--[if lt IE 9]>
 	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -103,7 +105,7 @@ $data = mysqli_query($conn, "select * from slider ORDER BY id DESC LIMIT 3");
 							<ul>
 								<?php
 								// Loop through the fetched data and display each image in the slider
-								while ($row = mysqli_fetch_assoc($data)) {
+								while ($row = mysqli_fetch_assoc($sliderData)) {
 									?>
 									<li class="first-slide" data-transition="fade" data-slotamount="10"
 										data-masterspeed="300">
@@ -141,30 +143,17 @@ $data = mysqli_query($conn, "select * from slider ORDER BY id DESC LIMIT 3");
 							<h2>What We Offer</h2>
 							<div class="section-dec"></div>
 						</div>
+
+						<?php  while($row=mysqli_fetch_assoc($offerData)){ ?>
 						<div class="service-item col-md-4">
-							<span><i class="fa fa-support"></i></span>
+							<span><i class="<?php echo$row['o_icon']; ?>"></i></span>
 							<div class="tittle">
-								<h3>Stylish Design</h3>
+								<h3><?php echo $row['o_title']; ?></h3>
 							</div>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum nam numquam voluptates
-								cumque inventore, quibusdam corporis consequatur amet.</p>
+							<p><?php echo $row['o_description']; ?></p>
 						</div>
-						<div class="service-item col-md-4">
-							<span><i class="fa fa-cogs"></i></span>
-							<div class="tittle">
-								<h3>Fully Responsive</h3>
-							</div>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum nam numquam voluptates
-								cumque inventore, quibusdam corporis consequatur amet.</p>
-						</div>
-						<div class="service-item col-md-4">
-							<span><i class="fa fa-eye"></i></span>
-							<div class="tittle">
-								<h3>Retina Ready</h3>
-							</div>
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum nam numquam voluptates
-								cumque inventore, quibusdam corporis consequatur amet.</p>
-						</div>
+						<?php  }?>
+						
 					</div>
 				</section>
 
