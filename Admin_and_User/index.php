@@ -2,7 +2,10 @@
 $conn = mysqli_connect('localhost', 'root', '', 'first-project');
 
 $sliderData = mysqli_query($conn, "select * from slider ORDER BY id DESC LIMIT 3");
-$offerData = mysqli_query($conn,"select * from offers ORDER BY o_id DESC LIMIT 3");
+$offerData = mysqli_query($conn, "select * from offers ORDER BY o_id DESC LIMIT 3");
+$themeData = mysqli_query($conn, "select * from abouttheme ORDER BY a_id DESC LIMIT 1");
+$photoData = mysqli_query($conn, "select * from recentphoto ORDER BY rp_id DESC LIMIT 9");
+
 
 // while($row=mysqli_fetch_assoc($data)){
 
@@ -49,6 +52,7 @@ $offerData = mysqli_query($conn,"select * from offers ORDER BY o_id DESC LIMIT 3
 </head>
 
 <body>
+
 
 
 	<div class="sidebar-menu-container" id="sidebar-menu-container">
@@ -104,7 +108,6 @@ $offerData = mysqli_query($conn,"select * from offers ORDER BY o_id DESC LIMIT 3
 						<div class="fullwidthbanner">
 							<ul>
 								<?php
-								// Loop through the fetched data and display each image in the slider
 								while ($row = mysqli_fetch_assoc($sliderData)) {
 									?>
 									<li class="first-slide" data-transition="fade" data-slotamount="10"
@@ -120,14 +123,15 @@ $offerData = mysqli_query($conn,"select * from offers ORDER BY o_id DESC LIMIT 3
 											data-hoffset="0" data-y="340" data-speed="1000" data-start="800"
 											data-easing="Power4.easeOut" data-splitin="none" data-splitout="none"
 											data-elementdelay="0" data-endelementdelay="0">
-											<?php echo $row['description']; ?></div>
+											<?php echo $row['description']; ?>
+										</div>
 										<div class="tp-caption slider-btn sfb tp-resizeme start" data-x="center"
 											data-hoffset="0" data-y="510" data-speed="1000" data-start="2200"
 											data-easing="Power4.easeOut" data-splitin="none" data-splitout="none"
 											data-elementdelay="0" data-endelementdelay="0"><a href="#"
 												class="btn btn-slider">Discover More</a></div>
 									</li>
-								<?php
+									<?php
 								}
 								?>
 							</ul>
@@ -144,16 +148,16 @@ $offerData = mysqli_query($conn,"select * from offers ORDER BY o_id DESC LIMIT 3
 							<div class="section-dec"></div>
 						</div>
 
-						<?php  while($row=mysqli_fetch_assoc($offerData)){ ?>
-						<div class="service-item col-md-4">
-							<span><i class="<?php echo$row['o_icon']; ?>"></i></span>
-							<div class="tittle">
-								<h3><?php echo $row['o_title']; ?></h3>
+						<?php while ($row = mysqli_fetch_assoc($offerData)) { ?>
+							<div class="service-item col-md-4">
+								<span><i class="<?php echo $row['o_icon']; ?>"></i></span>
+								<div class="tittle">
+									<h3><?php echo $row['o_title']; ?></h3>
+								</div>
+								<p><?php echo $row['o_description']; ?></p>
 							</div>
-							<p><?php echo $row['o_description']; ?></p>
-						</div>
-						<?php  }?>
-						
+						<?php } ?>
+
 					</div>
 				</section>
 
@@ -180,15 +184,17 @@ $offerData = mysqli_query($conn,"select * from offers ORDER BY o_id DESC LIMIT 3
 
 				<section class="call-to-action-2">
 					<div class="container">
+						<?php while($row=mysqli_fetch_assoc($themeData)) { ?>
 						<div class="left-text hidden-xs">
-							<h4>To know about this theme read this</h4>
-							<p><em>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi ut explicabo magni
-									sapiente.</em><br><br>Inventore at quia, vel in repellendus, cumque dolorem autem ad
-								quidem mollitia porro blanditiis atque rerum debitis eveniet nostrum aliquam. Sint
-								aperiam expedita sapiente amet officia quis perspiciatis adipisci, iure dolorem esse
-								exercitationem!</p>
+							<h4>
+								<?php echo $row['a_title'];?>
+							</h4>
+							<p><em><?php echo $row['a_subtitle']; ?></em><br><br>
+								<?php echo $row['a_description']; ?>
+							</p>
 						</div>
-						<div class="right-image hidden-xs"></div>
+						<div class="right-image hidden-xs"><img src="admin/images/<?php echo $row['a_image']; ?>" alt="" style="width:100%; height:100%;"></div>
+						<?php } ?>
 					</div>
 				</section>
 
@@ -202,76 +208,15 @@ $offerData = mysqli_query($conn,"select * from offers ORDER BY o_id DESC LIMIT 3
 							<div class="col-md-12">
 								<div id="owl-portfolio" class="owl-carousel owl-theme">
 									<div class="item">
+										<?php while($row=mysqli_fetch_assoc($photoData)){ ?>
 										<figure>
-											<img alt="portfolio" src="files/images/01-portfolio.jpg">
+											<img alt="portfolio" src="admin/images/<?php echo $row['rp_image']; ?>">
 											<figcaption>
-												<h3>Plaid Authentic</h3>
-												<p>Lorem ipsum dolor sit amet consectetur.</p>
+												<h3><?php echo $row['rp_title']; ?></h3>
+												<p><?php echo $row['rp_description']; ?></p>
 											</figcaption>
 										</figure>
-									</div>
-									<div class="item">
-										<figure>
-											<img alt="portfolio" src="files/images/02-portfolio.jpg">
-											<figcaption>
-												<h3>Portland Neutra</h3>
-												<p>Lorem ipsum dolor sit amet consectetur.</p>
-											</figcaption>
-										</figure>
-									</div>
-									<div class="item">
-										<figure>
-											<img alt="portfolio" src="files/images/03-portfolio.jpg">
-											<figcaption>
-												<h3>Synth Thundercats</h3>
-												<p>Lorem ipsum dolor sit amet consectetur.</p>
-											</figcaption>
-										</figure>
-									</div>
-									<div class="item">
-										<figure>
-											<img alt="portfolio" src="files/images/04-portfolio.jpg">
-											<figcaption>
-												<h3>Bushwick Letterpress</h3>
-												<p>Lorem ipsum dolor sit amet consectetur.</p>
-											</figcaption>
-										</figure>
-									</div>
-									<div class="item">
-										<figure>
-											<img alt="portfolio" src="files/images/05-portfolio.jpg">
-											<figcaption>
-												<h3>Fashion Heirloom</h3>
-												<p>Lorem ipsum dolor sit amet consectetur.</p>
-											</figcaption>
-										</figure>
-									</div>
-									<div class="item">
-										<figure>
-											<img alt="portfolio" src="files/images/06-portfolio.jpg">
-											<figcaption>
-												<h3>Locavore Brooklyn</h3>
-												<p>Lorem ipsum dolor sit amet consectetur.</p>
-											</figcaption>
-										</figure>
-									</div>
-									<div class="item">
-										<figure>
-											<img alt="portfolio" src="files/images/07-portfolio.jpg">
-											<figcaption>
-												<h3>Meggings Mixtape</h3>
-												<p>Lorem ipsum dolor sit amet consectetur.</p>
-											</figcaption>
-										</figure>
-									</div>
-									<div class="item">
-										<figure>
-											<img alt="portfolio" src="files/images/08-portfolio.jpg">
-											<figcaption>
-												<h3>Normcore Dreamcatcher</h3>
-												<p>Lorem ipsum dolor sit amet consectetur.</p>
-											</figcaption>
-										</figure>
+										<?php } ?>
 									</div>
 								</div>
 							</div>
