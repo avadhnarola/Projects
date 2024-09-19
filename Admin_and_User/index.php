@@ -5,6 +5,7 @@ $sliderData = mysqli_query($conn, "select * from slider ORDER BY id DESC LIMIT 3
 $offerData = mysqli_query($conn, "select * from offers ORDER BY o_id DESC LIMIT 3");
 $themeData = mysqli_query($conn, "select * from abouttheme ORDER BY a_id DESC LIMIT 1");
 $photoData = mysqli_query($conn, "select * from recentphoto ORDER BY rp_id DESC LIMIT 9");
+$sayData = mysqli_query($conn, "select * from saying ORDER BY s_id DESC LIMIT 9");
 
 
 // while($row=mysqli_fetch_assoc($data)){
@@ -184,16 +185,17 @@ $photoData = mysqli_query($conn, "select * from recentphoto ORDER BY rp_id DESC 
 
 				<section class="call-to-action-2">
 					<div class="container">
-						<?php while($row=mysqli_fetch_assoc($themeData)) { ?>
-						<div class="left-text hidden-xs">
-							<h4>
-								<?php echo $row['a_title'];?>
-							</h4>
-							<p><em><?php echo $row['a_subtitle']; ?></em><br><br>
-								<?php echo $row['a_description']; ?>
-							</p>
-						</div>
-						<div class="right-image hidden-xs"><img src="admin/images/<?php echo $row['a_image']; ?>" alt="" style="width:100%; height:100%;"></div>
+						<?php while ($row = mysqli_fetch_assoc($themeData)) { ?>
+							<div class="left-text hidden-xs">
+								<h4>
+									<?php echo $row['a_title']; ?>
+								</h4>
+								<p><em><?php echo $row['a_subtitle']; ?></em><br><br>
+									<?php echo $row['a_description']; ?>
+								</p>
+							</div>
+							<div class="right-image hidden-xs"><img src="admin/images/<?php echo $row['a_image']; ?>" alt=""
+									style="width:100%; height:100%;"></div>
 						<?php } ?>
 					</div>
 				</section>
@@ -207,17 +209,18 @@ $photoData = mysqli_query($conn, "select * from recentphoto ORDER BY rp_id DESC 
 						<div class="row">
 							<div class="col-md-12">
 								<div id="owl-portfolio" class="owl-carousel owl-theme">
-									<div class="item">
-										<?php while($row=mysqli_fetch_assoc($photoData)){ ?>
-										<figure>
-											<img alt="portfolio" src="admin/images/<?php echo $row['rp_image']; ?>">
-											<figcaption>
-												<h3><?php echo $row['rp_title']; ?></h3>
-												<p><?php echo $row['rp_description']; ?></p>
-											</figcaption>
-										</figure>
-										<?php } ?>
-									</div>
+									<?php while ($row = mysqli_fetch_assoc($photoData)) { ?>
+										<div class="item">
+											<figure>
+												<img alt="portfolio" src="admin/images/<?php echo $row['rp_image']; ?>"
+													height="196px">
+												<figcaption>
+													<h3><?php echo $row['rp_title']; ?></h3>
+													<p><?php echo $row['rp_description']; ?></p>
+												</figcaption>
+											</figure>
+										</div>
+									<?php } ?>
 								</div>
 							</div>
 						</div>
@@ -238,70 +241,15 @@ $photoData = mysqli_query($conn, "select * from recentphoto ORDER BY rp_id DESC 
 						<div class="row">
 							<div class="col-md-12">
 								<div id="owl-demo" class="owl-carousel owl-theme">
-									<div class="item">
-										<div class="testimonials-post">
+									<?php while ($row = mysqli_fetch_assoc($sayData)) { ?>
+									<div class="item" >
+										<div class="testimonials-post" style="height:200px">
 											<span class="fa fa-quote-left"></span>
-											<p>“ At vero eos et accusamus et iusto odio dignissimos ducimus qui
-												molestias excepturi blanditis ”</p>
-											<h6>Ramshad Imeri - <em>India,Malappura</em></h6>
+											<p>“ <?php echo $row['s_title'] ?>”</p>
+											<h6><?php echo $row['s_feedbacker']; ?> - <em><?php echo $row['s_place']; ?></em></h6>
 										</div>
 									</div>
-									<div class="item">
-										<div class="testimonials-post">
-											<span class="fa fa-quote-left"></span>
-											<p>“ At vero eos et accusamus et iusto odio dignissimos ducimus qui
-												molestias excepturi blanditis ”</p>
-											<h6>Akhil Luis - <em>India, Calicut</em></h6>
-										</div>
-									</div>
-									<div class="item">
-										<div class="testimonials-post">
-											<span class="fa fa-quote-left"></span>
-											<p>“ At vero eos et accusamus et iusto odio dignissimos ducimus qui
-												molestias excepturi blanditis ”</p>
-											<h6>Ramkumar - <em>Munnar, Kerala</em></h6>
-										</div>
-									</div>
-									<div class="item">
-										<div class="testimonials-post">
-											<span class="fa fa-quote-left"></span>
-											<p>“ At vero eos et accusamus et iusto odio dignissimos ducimus qui
-												molestias excepturi blanditis ”</p>
-											<h6>Sajit OB - <em>Berlin, Germany</em></h6>
-										</div>
-									</div>
-									<div class="item">
-										<div class="testimonials-post">
-											<span class="fa fa-quote-left"></span>
-											<p>“ At vero eos et accusamus et iusto odio dignissimos ducimus qui
-												molestias excepturi blanditis ”</p>
-											<h6>Anithamol Benny - <em>Thodupuzha, Kottayam</em></h6>
-										</div>
-									</div>
-									<div class="item">
-										<div class="testimonials-post">
-											<span class="fa fa-quote-left"></span>
-											<p>“ At vero eos et accusamus et iusto odio dignissimos ducimus qui
-												molestias excepturi blanditis ”</p>
-											<h6>Sreejith Rajan - <em>India, Alappuzha</em></h6>
-										</div>
-									</div>
-									<div class="item">
-										<div class="testimonials-post">
-											<span class="fa fa-quote-left"></span>
-											<p>“ At vero eos et accusamus et iusto odio dignissimos ducimus qui
-												molestias excepturi blanditis ”</p>
-											<h6>Aneeshkumar - <em>Kakkanad ,Cochin</em></h6>
-										</div>
-									</div>
-									<div class="item">
-										<div class="testimonials-post">
-											<span class="fa fa-quote-left"></span>
-											<p>“ At vero eos et accusamus et iusto odio dignissimos ducimus qui
-												molestias excepturi blanditis ”</p>
-											<h6>Rohit Sarma - <em>Gurgaon, India</em></h6>
-										</div>
-									</div>
+									<?php  } ?>
 								</div>
 							</div>
 						</div>

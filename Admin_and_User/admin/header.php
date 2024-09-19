@@ -323,6 +323,30 @@ include_once 'db.php';
                 </li>
               </ul>
             </li>
+
+            <li class="nav-item menu-open">
+              <a href="#" class="nav-link ">
+                <i class="nav-icon fas fa-tachometer-alt"></i>
+                <p>
+                  Manage Others Saying
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="addSaying.php" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Add Saying</p>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a href="viewSaying.php" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>View Saying</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
            
           </ul>
           </nav>
