@@ -6,6 +6,7 @@ $offerData = mysqli_query($conn, "select * from offers ORDER BY o_id DESC LIMIT 
 $themeData = mysqli_query($conn, "select * from abouttheme ORDER BY a_id DESC LIMIT 1");
 $photoData = mysqli_query($conn, "select * from recentphoto ORDER BY rp_id DESC LIMIT 9");
 $sayData = mysqli_query($conn, "select * from saying ORDER BY s_id DESC LIMIT 9");
+$imgData = mysqli_query($conn, "select * from imagedetails ORDER BY id_id DESC LIMIT 3");
 
 
 // while($row=mysqli_fetch_assoc($data)){
@@ -112,10 +113,10 @@ $sayData = mysqli_query($conn, "select * from saying ORDER BY s_id DESC LIMIT 9"
 								while ($row = mysqli_fetch_assoc($sliderData)) {
 									?>
 									<li class="first-slide" data-transition="fade" data-slotamount="10"
-										data-masterspeed="300">
+										data-masterspeed="300" >
 
 										<img src="admin/images/<?php echo $row['image'] ?>" data-fullwidthcentering="on"
-											alt="slide">
+											alt="slide" style="background-size:cover;">
 										<div class="tp-caption first-line lft tp-resizeme start" data-x="center"
 											data-hoffset="0" data-y="250" data-speed="1000" data-start="200"
 											data-easing="Power4.easeOut" data-splitin="none" data-splitout="none"
@@ -176,7 +177,7 @@ $sayData = mysqli_query($conn, "select * from saying ORDER BY s_id DESC LIMIT 9"
 								<div class="border-btn"><a href="#">Learn More</a></div>
 							</div>
 							<div class="col-md-6 col-sm-6 col-xs-6">
-								<div class="btn-black"><a href="#">Buy This Theme</a></div>
+								<div class="btn-black"><a href="#"  style="display:flex;justify-content:center">Buy This Theme</a></div>
 							</div>
 						</div>
 					</div>
@@ -227,7 +228,7 @@ $sayData = mysqli_query($conn, "select * from saying ORDER BY s_id DESC LIMIT 9"
 						<div class="owl-navigation">
 							<a class="btn prev fa fa-angle-left"></a>
 							<a class="btn next fa fa-angle-right"></a>
-							<a href="work-3columns.html" class="go-to">Go to portfolio</a>
+							<a href="#" class="go-to">Go to portfolio</a>
 						</div>
 					</div>
 				</section>
@@ -242,14 +243,16 @@ $sayData = mysqli_query($conn, "select * from saying ORDER BY s_id DESC LIMIT 9"
 							<div class="col-md-12">
 								<div id="owl-demo" class="owl-carousel owl-theme">
 									<?php while ($row = mysqli_fetch_assoc($sayData)) { ?>
-									<div class="item" >
-										<div class="testimonials-post" style="height:200px">
-											<span class="fa fa-quote-left"></span>
-											<p>“ <?php echo $row['s_title'] ?>”</p>
-											<h6><?php echo $row['s_feedbacker']; ?> - <em><?php echo $row['s_place']; ?></em></h6>
+										<div class="item">
+											<div class="testimonials-post" style="height:200px">
+												<span class="fa fa-quote-left"></span>
+												<p>“ <?php echo $row['s_title'] ?>”</p>
+												<h6><?php echo $row['s_feedbacker']; ?> -
+													<em><?php echo $row['s_place']; ?></em>
+												</h6>
+											</div>
 										</div>
-									</div>
-									<?php  } ?>
+									<?php } ?>
 								</div>
 							</div>
 						</div>
@@ -268,47 +271,24 @@ $sayData = mysqli_query($conn, "select * from saying ORDER BY s_id DESC LIMIT 9"
 				<section class="blog-posts">
 					<div class="container">
 						<div class="section-heading">
-							<h2>Latest Posts</h2>
+							<h2
+								style="color:#272727;text-transform: uppercase;font-size: 24px;font-weight: 600;letter-spacing: 1px;">
+								Latest Posts</h2>
 							<div class="section-dec"></div>
 						</div>
-						<div class="blog-item">
-							<div class="col-md-4">
-								<a href="blog-single.html"><img src="files/images/01-blog.jpg" alt=""></a>
-								<h3><a href="blog-single.html">Lorum Ipsum5</a></h3>
-								<span><a href="#">Syam Kesav</a> / <a href="#">6 June 2015</a> / <a
-										href="#">Uncategorized</a></span>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit alis quam est leo, imperdiet
-									eget dictum sed, congue non erosa senean sed ligula hendrerit...</p>
-								<div class="read-more">
-									<a href="blog-single.html">Read more</a>
+						<div class="blog-item" >
+							<?php while ($row = mysqli_fetch_assoc($imgData)) { ?>
+								<div class="col-md-4">
+									<a href="#"><img src="admin/images/<?php echo $row['id_image'];?>" alt="" height="200px"></a>
+									<h3><a href="#"><?php echo $row['id_title'];?></a></h3>
+									<span><a href="#"><?php echo $row['id_name'];?></a> / <a href="#"><?php echo $row['id_date'];?></a> / <a
+											href="#"><?php echo $row['id_category'];?></a></span>
+									<p><?php echo $row['id_description'];?></p>
+									<div class="read-more">
+										<a href="blog-single.html">Read more</a>
+									</div>
 								</div>
-							</div>
-						</div>
-						<div class="blog-item">
-							<div class="col-md-4">
-								<a href="blog-single.html"><img src="files/images/02-blog.jpg" alt=""></a>
-								<h3><a href="blog-single.html">Lorum Ipsum5</a></h3>
-								<span><a href="#">Manohar Raj</a> / <a href="#">6 June 2015</a> / <a
-										href="#">Uncategorized</a></span>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit alis quam est leo, imperdiet
-									eget dictum sed, congue non erosa senean sed ligula hendrerit...</p>
-								<div class="read-more">
-									<a href="blog-single.html">Read more</a>
-								</div>
-							</div>
-						</div>
-						<div class="blog-item">
-							<div class="col-md-4">
-								<a href="blog-single.html"><img src="files/images/03-blog.jpg" alt=""></a>
-								<h3><a href="blog-single.html">Lorum Ipsum5</a></h3>
-								<span><a href="#">George Yeti</a> / <a href="#">6 June 2015</a> / <a
-										href="#">Uncategorized</a></span>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit alis quam est leo, imperdiet
-									eget dictum sed, congue non erosa senean sed ligula hendrerit...</p>
-								<div class="read-more">
-									<a href="blog-single.html">Read more</a>
-								</div>
-							</div>
+							<?php } ?>
 						</div>
 					</div>
 				</section>
