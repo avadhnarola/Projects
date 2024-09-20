@@ -45,6 +45,7 @@ $imgData = mysqli_query($conn, "select * from imagedetails ORDER BY id_id DESC L
 	<link rel="stylesheet" href="files/css/style.css">
 	<link rel="stylesheet" href="files/rs-plugin/css/settings.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
 	<!--[if lt IE 9]>
 	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -76,7 +77,7 @@ $imgData = mysqli_query($conn, "select * from imagedetails ORDER BY id_id DESC L
 							</div>
 							<nav class="main-navigation pull-right hidden-xs hidden-sm">
 								<ul>
-									<li><a href="index-2.html">Home</a></li>
+									<li><a href="index.php">Home</a></li>
 									<li><a href="#" class="has-submenu">Pages</a>
 										<ul class="sub-menu">
 											<li><a href="services.html">Services</a></li>
@@ -113,7 +114,7 @@ $imgData = mysqli_query($conn, "select * from imagedetails ORDER BY id_id DESC L
 								while ($row = mysqli_fetch_assoc($sliderData)) {
 									?>
 									<li class="first-slide" data-transition="fade" data-slotamount="10"
-										data-masterspeed="300" >
+										data-masterspeed="300">
 
 										<img src="admin/images/<?php echo $row['image'] ?>" data-fullwidthcentering="on"
 											alt="slide" style="background-size:cover;">
@@ -177,7 +178,8 @@ $imgData = mysqli_query($conn, "select * from imagedetails ORDER BY id_id DESC L
 								<div class="border-btn"><a href="#">Learn More</a></div>
 							</div>
 							<div class="col-md-6 col-sm-6 col-xs-6">
-								<div class="btn-black"><a href="#"  style="display:flex;justify-content:center">Buy This Theme</a></div>
+								<div class="btn-black"><a href="#" style="display:flex;justify-content:center">Buy This
+										Theme</a></div>
 							</div>
 						</div>
 					</div>
@@ -276,14 +278,16 @@ $imgData = mysqli_query($conn, "select * from imagedetails ORDER BY id_id DESC L
 								Latest Posts</h2>
 							<div class="section-dec"></div>
 						</div>
-						<div class="blog-item" >
+						<div class="blog-item">
 							<?php while ($row = mysqli_fetch_assoc($imgData)) { ?>
 								<div class="col-md-4">
-									<a href="#"><img src="admin/images/<?php echo $row['id_image'];?>" alt="" height="200px"></a>
-									<h3><a href="#"><?php echo $row['id_title'];?></a></h3>
-									<span><a href="#"><?php echo $row['id_name'];?></a> / <a href="#"><?php echo $row['id_date'];?></a> / <a
-											href="#"><?php echo $row['id_category'];?></a></span>
-									<p><?php echo $row['id_description'];?></p>
+									<a href="#"><img src="admin/images/<?php echo $row['id_image']; ?>" alt=""
+											height="200px"></a>
+									<h3><a href="#"><?php echo $row['id_title']; ?></a></h3>
+									<span><a href="#"><?php echo $row['id_name']; ?></a> / <a
+											href="#"><?php echo $row['id_date']; ?></a> / <a
+											href="#"><?php echo $row['id_category']; ?></a></span>
+									<p><?php echo $row['id_description']; ?></p>
 									<div class="read-more">
 										<a href="blog-single.html">Read more</a>
 									</div>
@@ -307,22 +311,22 @@ $imgData = mysqli_query($conn, "select * from imagedetails ORDER BY id_id DESC L
 								<ul class="socials">
 									<li>
 										<a href="http://facebook.com">
-											<i class="fa fa-facebook"></i>
+											<i class="fa-brands fa-facebook-f"></i>
 										</a>
 									</li>
 									<li>
 										<a href="http://twitter.com">
-											<i class="fa fa-twitter"></i>
+											<i class="fa-brands fa-twitter"></i>
 										</a>
 									</li>
 									<li>
-										<a href="http://dribbble.com">
-											<i class="fa fa-dribbble"></i>
+										<a href="http://instagram.com">
+											<i class="fa-brands fa-instagram"></i>
 										</a>
 									</li>
 									<li>
-										<a href="http://tumblr.com">
-											<i class="fa fa-tumblr"></i>
+										<a href="http://threads.com">
+										<i class="fa-brands fa-threads"></i>
 										</a>
 									</li>
 								</ul>
