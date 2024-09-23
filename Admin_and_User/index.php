@@ -2,7 +2,7 @@
 $conn = mysqli_connect('localhost', 'root', '', 'first-project');
 
 $sliderData = mysqli_query($conn, "select * from slider ORDER BY id DESC LIMIT 3");
-$offerData = mysqli_query($conn, "select * from offers ORDER BY o_id DESC LIMIT 3");
+$offerData = mysqli_query($conn, "select * from offers limit 3");
 $themeData = mysqli_query($conn, "select * from abouttheme ORDER BY a_id DESC LIMIT 1");
 $photoData = mysqli_query($conn, "select * from recentphoto ORDER BY rp_id DESC LIMIT 9");
 $sayData = mysqli_query($conn, "select * from saying ORDER BY s_id DESC LIMIT 9");
@@ -45,7 +45,6 @@ $imgData = mysqli_query($conn, "select * from imagedetails ORDER BY id_id DESC L
 	<link rel="stylesheet" href="files/css/style.css">
 	<link rel="stylesheet" href="files/rs-plugin/css/settings.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
 	<!--[if lt IE 9]>
 	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
@@ -80,15 +79,15 @@ $imgData = mysqli_query($conn, "select * from imagedetails ORDER BY id_id DESC L
 									<li><a href="index.php">Home</a></li>
 									<li><a href="#" class="has-submenu">Pages</a>
 										<ul class="sub-menu">
-											<li><a href="services.html">Services</a></li>
-											<li><a href="clients.html">Clients</a></li>
+											<li><a href="services.php">Services</a></li>
+											<li><a href="clients.php">Clients</a></li>
 										</ul>
 									</li>
 									<li><a href="#" class="has-submenu">Blog</a>
 										<ul class="sub-menu">
-											<li><a href="blog.html">Blog Classic</a></li>
-											<li><a href="blog-grid.html">Blog Grid</a></li>
-											<li><a href="blog-single.html">Single Post</a></li>
+											<li><a href="blog.php">Blog Classic</a></li>
+											<li><a href="blog-grid.php">Blog Grid</a></li>
+											<li><a href="blog-single.php">Single Post</a></li>
 										</ul>
 									</li>
 									<li><a href="about.html">About</a></li>
@@ -197,7 +196,7 @@ $imgData = mysqli_query($conn, "select * from imagedetails ORDER BY id_id DESC L
 									<?php echo $row['a_description']; ?>
 								</p>
 							</div>
-							<div class="right-image hidden-xs"><img src="admin/images/<?php echo $row['a_image']; ?>" alt=""
+							<div class="right-image hidden-xs"><img src="admin/images/<?php echo $row['a_image']; ?>" alt="image"
 									style="width:100%; height:100%;"></div>
 						<?php } ?>
 					</div>
