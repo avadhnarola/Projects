@@ -1,7 +1,7 @@
 <?php
 include_once "db.php";
 
-// $data = mysqli_query($conn, "delect * from imagedetails");
+$data = mysqli_query($conn, "select * from imagedetails");
 ?>
 
 <?php include_once 'f-header.php'; ?>
@@ -19,90 +19,21 @@ include_once "db.php";
 <section class="on-blog-grid">
     <div class="container">
         <div class="row">
-            <div class="col-md-4">
-                <div class="blog-item">
-                    <a href="blog-single.php"><img src="files/images/01-blog.jpg" alt=""></a>
-                    <h3><a href="blog-single.php">Lorum Ipsum5</a></h3>
-                    <span><a href="#">Manohar Raj</a> / <a href="#">6 June 2015</a> / <a
-                            href="#">Uncategorized</a></span>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam porro atque dolore
-                        corporis et iste assumenda quas, cumque modi quibusdam. Eveniet modi aliquid
-                        ex...</p>
-                    <div class="read-more">
-                        <a href="blog-single.php">Read more</a>
+            <?php while ($row = mysqli_fetch_assoc($data)) { ?>
+                <div class="col-md-4">
+                    <div class="blog-item">
+                        <a href="blog-single.php"><img src="admin/images/<?php echo $row['id_image']; ?>" alt="" style="height:360px"></a>
+                        <h3><a href="blog-single.php"><?php echo $row['id_title']; ?></a></h3>
+                        <span><a href="#"><?php echo $row['id_name']; ?></a> / <a href="#"><?php echo $row['id_date']; ?></a> / <a
+                                href="#"><?php echo $row['id_category']; ?></a></span>
+                        <p><?php echo $row['id_description']; ?></p>
+                        <div class="read-more">
+                            <a href="blog-single.php">Read more</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div class="blog-item">
-                    <a href="blog-single.php"><img src="files/images/02-blog.jpg" alt=""></a>
-                    <h3><a href="blog-single.php">Lorum Ipsum5</a></h3>
-                    <span><a href="#">Manohar Raj</a> / <a href="#">6 June 2015</a> / <a
-                            href="#">Uncategorized</a></span>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam porro atque dolore
-                        corporis et iste assumenda quas, cumque modi quibusdam. Eveniet modi aliquid
-                        ex...</p>
-                    <div class="read-more">
-                        <a href="blog-single.php">Read more</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="blog-item">
-                    <a href="blog-single.php"><img src="files/images/03-blog.jpg" alt=""></a>
-                    <h3><a href="blog-single.php">Lorum Ipsum5</a></h3>
-                    <span><a href="#">Syam Kesav</a> / <a href="#">6 June 2015</a> / <a
-                            href="#">Uncategorized</a></span>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam porro atque dolore
-                        corporis et iste assumenda quas, cumque modi quibusdam. Eveniet modi aliquid
-                        ex...</p>
-                    <div class="read-more">
-                        <a href="blog-single.php">Read more</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="blog-item">
-                    <a href="blog-single.php"><img src="files/images/04-blog.jpg" alt=""></a>
-                    <h3><a href="blog-single.php">Lorum Ipsum5</a></h3>
-                    <span><a href="#">Manohar Raj</a> / <a href="#">6 June 2015</a> / <a
-                            href="#">Uncategorized</a></span>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam porro atque dolore
-                        corporis et iste assumenda quas, cumque modi quibusdam. Eveniet modi aliquid
-                        ex...</p>
-                    <div class="read-more">
-                        <a href="blog-single.php">Read more</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="blog-item">
-                    <a href="blog-single.php"><img src="files/images/05-blog.jpg" alt=""></a>
-                    <h3><a href="blog-single.php">Lorum Ipsum5</a></h3>
-                    <span><a href="#">Manohar Raj</a> / <a href="#">6 June 2015</a> / <a
-                            href="#">Uncategorized</a></span>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam porro atque dolore
-                        corporis et iste assumenda quas, cumque modi quibusdam. Eveniet modi aliquid
-                        ex...</p>
-                    <div class="read-more">
-                        <a href="blog-single.php">Read more</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="blog-item">
-                    <a href="blog-single.php"><img src="files/images/06-blog.jpg" alt=""></a>
-                    <h3><a href="blog-single.php">Lorum Ipsum5</a></h3>
-                    <span><a href="#">Manohar Raj</a> / <a href="#">6 June 2015</a> / <a
-                            href="#">Uncategorized</a></span>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam porro atque dolore
-                        corporis et iste assumenda quas, cumque modi quibusdam. Eveniet modi aliquid
-                        ex...</p>
-                    <div class="read-more">
-                        <a href="blog-single.php">Read more</a>
-                    </div>
-                </div>
-            </div>
+            <?php } ?>
+      
             <div class="col-md-12">
                 <div class="blog-page-nav text-center">
                     <ul>
