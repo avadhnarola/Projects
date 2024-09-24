@@ -1,3 +1,5 @@
+<?php include_once 'admin/db.php' ?>
+
 <!DOCTYPE html>
 <!--[if IE 9]>
 <html class="ie ie9" lang="en-US">
@@ -62,7 +64,6 @@
                                     </li>
                                     <li><a href="#" class="has-submenu">Blog</a>
                                         <ul class="sub-menu">
-                                            <li><a href="blog.php">Blog Classic</a></li>
                                             <li><a href="blog-grid.php">Blog Grid</a></li>
                                             <li><a href="blog-single.php">Single Post</a></li>
                                         </ul>

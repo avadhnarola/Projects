@@ -1,5 +1,5 @@
 <?php
-include_once 'db.php';
+
 
 $clientData = mysqli_query($conn, "select * from client limit 12");
 ?>
