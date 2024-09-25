@@ -1,4 +1,5 @@
 <?php 
+include_once 'admin/db.php';
     
 
     $total_data = mysqli_query($conn, "select * from imagedetails");

@@ -1,4 +1,5 @@
 <?php
+include_once 'admin/db.php';
 
 $offerData3 = mysqli_query($conn, "select * from offers limit 3");
 $offerData6 = mysqli_query($conn, "select * from offers ORDER BY o_id DESC LIMIT 3");

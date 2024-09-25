@@ -34,7 +34,9 @@ if (isset($_POST['submit'])) {
     }
     header("location:addLatestPosts.php");
 }
-?>
+
+$categoryData = mysqli_query($conn, "select * from category")
+    ?>
 
 
 
@@ -71,7 +73,8 @@ if (isset($_POST['submit'])) {
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Title</label>
                                     <input type="text" class="form-control" id="exampleInputEmail1"
-                                        placeholder="Enter Title" name="title" value="<?php echo @$u_data['id_title']; ?>">
+                                        placeholder="Enter Title" name="title"
+                                        value="<?php echo @$u_data['id_title']; ?>">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Name</label>
@@ -85,8 +88,13 @@ if (isset($_POST['submit'])) {
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">category</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1"
-                                        placeholder="Enter category" name="category" value="<?php echo @$u_data['id_category']; ?>">
+                                    <select name="category" id="" class="form-control">
+                                        <option value="" disabled>Select Category</option>
+                                        <?php while ($row = mysqli_fetch_assoc($categoryData)) { ?>
+                                            <option value="<?php echo $row['c_id']; ?>"><?php echo $row['c_name']; ?>
+                                            </option>
+                                        <?php } ?>
+                                    </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Discription</label>

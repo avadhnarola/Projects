@@ -1,6 +1,5 @@
 <?php
-
-
+include_once 'admin/db.php';
 
 $limit = 6;
 $total_data = mysqli_query($conn, "select * from imagedetails");

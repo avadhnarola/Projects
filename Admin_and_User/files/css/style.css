@@ -517,6 +517,7 @@ color:#333;
 }
 .blog-item p {
   padding-top: 15px;
+  height: 80px;
 }
 .blog-item a {
   color: #757575;

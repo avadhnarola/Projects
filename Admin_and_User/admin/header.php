@@ -221,7 +221,7 @@ include_once 'db.php';
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other i con font library -->
-            <li class="nav-item menu-open">
+            <li class="nav-item">
 
               <ul class="nav nav-treeview">
                 <li class="nav-item">
@@ -232,7 +232,7 @@ include_once 'db.php';
                 </li>
               </ul>
             </li>
-            <li class="nav-item menu-open">
+            <li class="nav-item">
               <a href="#" class="nav-link active">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
                 <p>
@@ -254,7 +254,7 @@ include_once 'db.php';
                   </a>
                 </li>
               </ul>
-            <li class="nav-item menu-open">
+            <li class="nav-item">
               <a href="#" class="nav-link ">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
                 <p>
@@ -277,7 +277,7 @@ include_once 'db.php';
                 </li>
               </ul>
             </li>
-            <li class="nav-item menu-open">
+            <li class="nav-item">
               <a href="#" class="nav-link ">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
                 <p>
@@ -300,7 +300,7 @@ include_once 'db.php';
                 </li>
               </ul>
             </li>
-            <li class="nav-item menu-open">
+            <li class="nav-item">
               <a href="#" class="nav-link ">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
                 <p>
@@ -323,8 +323,8 @@ include_once 'db.php';
                 </li>
               </ul>
             </li>
-
-            <li class="nav-item menu-open">
+            <!-- 
+            <li class="nav-item">
               <a href="#" class="nav-link ">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
                 <p>
@@ -346,9 +346,9 @@ include_once 'db.php';
                   </a>
                 </li>
               </ul>
-            </li>
+            </li> -->
 
-            <li class="nav-item menu-open">
+            <li class="nav-item">
               <a href="#" class="nav-link ">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
                 <p>
@@ -372,7 +372,7 @@ include_once 'db.php';
               </ul>
             </li>
 
-            <li class="nav-item menu-open">
+            <li class="nav-item">
               <a href="#" class="nav-link ">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
                 <p>
@@ -395,10 +395,28 @@ include_once 'db.php';
                 </li>
               </ul>
             </li>
-           
+            
+            <li class="nav-item">
+              <a href="#" class="nav-link ">
+                <i class="nav-icon fas fa-tachometer-alt"></i>
+                <p>
+                  Category
+                  <i class="right fas fa-angle-left"></i>
+                </p>
+              </a>
+              <ul class="nav nav-treeview">
+                <li class="nav-item">
+                  <a href="addCategory.php" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Add Category</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
           </ul>
           </nav>
           <!-- /.sidebar-menu -->
-      </div>
-      <!-- /.sidebar -->
+        </div>
+        <!-- /.sidebar -->
     </aside>
