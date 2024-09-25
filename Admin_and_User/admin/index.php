@@ -17,7 +17,7 @@ if(isset($_POST['submit'])){
     $cnt = mysqli_num_rows($data);
     
     $row = mysqli_fetch_assoc($data);
-    print_r($row);
+    // print_r($row);
     if($cnt == 1){
 
         $_SESSION['admin_id'] = $row['a_id'];

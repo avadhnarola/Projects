@@ -6,7 +6,8 @@ include_once 'header.php';
 if (!isset($_SESSION['admin_id'])) {
     header("location:index.php");
 }
-
+$a_name = $_SESSION['admin_name'];
+echo $a_name;
 
 
 if (isset($_GET['u_id'])) {
@@ -37,6 +38,7 @@ if (isset($_POST['submit'])) {
 
 $categoryData = mysqli_query($conn, "select * from category")
     ?>
+
 
 
 
@@ -79,7 +81,7 @@ $categoryData = mysqli_query($conn, "select * from category")
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Name</label>
                                     <input type="text" class="form-control" id="exampleInputEmail1"
-                                        placeholder="Enter Name" name="name" value="<?php echo @$u_data['id_name']; ?>">
+                                        placeholder="Enter Name" name="name" value="<?php echo $a_name; ?>">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Date</label>
@@ -87,11 +89,14 @@ $categoryData = mysqli_query($conn, "select * from category")
                                         placeholder="Enter Date" name="date" value="<?php echo @$u_data['id_date']; ?>">
                                 </div>
                                 <div class="form-group">
-                                    <label for="exampleInputEmail1">category</label>
+                                    <label for="exampleInputEmail1">Category</label>
                                     <select name="category" id="" class="form-control">
                                         <option value="" disabled>Select Category</option>
                                         <?php while ($row = mysqli_fetch_assoc($categoryData)) { ?>
-                                            <option value="<?php echo $row['c_id']; ?>"><?php echo $row['c_name']; ?>
+                                            <option value="<?php echo $row['c_id']; ?>" <?php if (@$u_data['id_category'] == $row['c_id']) {
+                                                   echo "selected"; // Select the current category if it matches
+                                               } ?>>
+                                                <?php echo $row['c_name']; ?>
                                             </option>
                                         <?php } ?>
                                     </select>
