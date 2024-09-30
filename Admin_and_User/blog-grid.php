@@ -34,7 +34,8 @@ $data = mysqli_query($conn, "select * from imagedetails limit $start,$limit");
             <?php while ($row = mysqli_fetch_assoc($data)) { ?>
                 <div class="col-md-4">
                     <div class="blog-item">
-                        <a href="blog-single.php"><img src="admin/images/<?php echo $row['id_image']; ?>" alt=""
+                        <a href="blog-single.php?blod_id=<?php echo $row['id_id']; ?>"><img
+                                src="admin/images/<?php echo $row['id_image']; ?>" alt=""
                                 style="height:202px; width:360px;"></a>
                         <h3><a href="blog-single.php"><?php echo $row['id_title']; ?></a></h3>
                         <span><a href="#"><?php echo $row['id_name']; ?></a> / <a

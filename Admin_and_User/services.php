@@ -1,8 +1,7 @@
 <?php
 include_once 'admin/db.php';
 
-$offerData3 = mysqli_query($conn, "select * from offers limit 3");
-$offerData6 = mysqli_query($conn, "select * from offers ORDER BY o_id DESC LIMIT 3");
+$offerData = mysqli_query($conn, "select * from offers ORDER BY o_id DESC LIMIT 0,6");
 $themeData = mysqli_query($conn, "select * from abouttheme ORDER BY a_id DESC LIMIT 1");
 
 
@@ -27,7 +26,7 @@ $themeData = mysqli_query($conn, "select * from abouttheme ORDER BY a_id DESC LI
 				<h2>What We Offer</h2>
 				<div class="section-dec"></div>
 			</div>
-			<?php while ($row = mysqli_fetch_assoc($offerData3)) { ?>
+			<?php while ($row = mysqli_fetch_assoc($offerData)) { ?>
 				<div class="service-item col-md-4 ">
 					<span><i class="<?php echo $row['o_icon']; ?>"></i></span>
 					<div class="tittle">
@@ -36,19 +35,6 @@ $themeData = mysqli_query($conn, "select * from abouttheme ORDER BY a_id DESC LI
 					<p><?php echo $row['o_description']; ?></p>
 				</div>
 			<?php } ?>
-		</div>
-		<div class="container">
-			<div class="row">
-				<?php while ($row = mysqli_fetch_assoc($offerData6)) { ?>
-					<div class="service-item col-md-4">
-						<span><i class="<?php echo $row['o_icon']; ?>"></i></span>
-						<div class="tittle">
-							<h3><?php echo $row['o_title']; ?></h3>
-						</div>
-						<p><?php echo $row['o_description']; ?></p>
-					</div>
-				<?php } ?>
-			</div>
 		</div>
 </section>
 

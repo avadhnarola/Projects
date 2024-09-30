@@ -1,8 +1,15 @@
 <?php 
 include_once 'admin/db.php';
     
+if(isset($_GET['id_id'])){
+    $bid = $_GET['id_id'];
+    echo "<h1>Hello</h1>";   
+}
+$id=@$bid;
+echo $id;
+die();
+$total_data = mysqli_query($conn, "select * from imagedetails where id_id='$id'");
 
-    $total_data = mysqli_query($conn, "select * from imagedetails");
 ?>
 <?php include_once 'f-header.php' ?>
 

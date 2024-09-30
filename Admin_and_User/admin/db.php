@@ -1,6 +1,6 @@
 <?php 
 
     session_start();
-    $conn = mysqli_connect("localhost","root","","first-project");
+    $conn = mysqli_connect(hostname: "localhost",username: "root",password: "",database: "first-project");
 
 ?>
