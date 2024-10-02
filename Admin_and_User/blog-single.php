@@ -1,14 +1,16 @@
-<?php 
+<?php
 include_once 'admin/db.php';
-    
-if(isset($_GET['id_id'])){
-    $bid = $_GET['id_id'];
-    echo "<h1>Hello</h1>";   
+
+$all = mysqli_query($conn, "select * from imagedetails");
+$all_d = mysqli_fetch_assoc($all);
+
+if (isset($_GET['id']) && isset($all_d[$_GET['id']])) {
+    $bid = $_GET['blog_id'];
+
+    echo $data;
 }
-$id=@$bid;
-echo $id;
-die();
-$total_data = mysqli_query($conn, "select * from imagedetails where id_id='$id'");
+$data = mysqli_query($conn, "select * from imagedetails limit 0,1");
+// die();
 
 ?>
 <?php include_once 'f-header.php' ?>
@@ -28,16 +30,14 @@ $total_data = mysqli_query($conn, "select * from imagedetails where id_id='$id'"
     <div class="container">
         <div class="row">
             <div class="col-md-8">
+                <?php while($row=mysqli_fetch_assoc($data)){ ?>
                 <div class="blog-single-item">
-                    <img src="files/images/01-big-blog.jpg" alt="">
+                    <img src="admin/images/<?php echo $row['id_image'];?>" alt="">
                     <div class="blog-single-content">
-                        <h3><a href="#">Lorum Ipsum5</a></h3>
-                        <span><a href="#">Manohar Raj</a> / <a href="#">6 June 2015</a> / <a
-                                href="#">Uncategorized</a></span>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis cupiditate cumque vitae
-                            necessitatibus recusandae suscipit ipsum a harum illo odit, facilis optio aspernatur,
-                            accusantium mollitia aut incidunt quasi earum libero possimus quaerat iste blanditiis
-                            assumenda dolorum ducimus ab. <br><br> <em><i class="fa fa-info"></i>Quis, sequi illo nobis
+                        <h3><a href="#"><?php echo $row['id_title']; ?></a></h3>
+                        <span><a href="#"><?php echo $row['id_name']; ?></a> / <a href="#"><?php echo $row['id_date']; ?> / <a
+                                href="#"><?php echo $row['id_category']; ?></a></span>
+                        <p><?php echo $row['id_description']; ?> <br><br> <em><i class="fa fa-info"></i>Quis, sequi illo nobis
                                 velit. Quas minima corporis quis laborum, ex odit natus.</em><br><br>Blanditiis possimus
                             voluptas similique numquam consequatur dolorem labore veritatis quaerat laboriosam, porro
                             tenetur vel exercitationem laborum aperiam repellat expedita ipsum corrupti perspiciatis!
@@ -60,6 +60,7 @@ $total_data = mysqli_query($conn, "select * from imagedetails where id_id='$id'"
                         <a href="#">Next<i class="fa fa-angle-right"></i></a>
                     </div>
                 </div>
+                <?php }?>
                 <div class="blog-comments">
                     <h2>7 Comments</h2>
                     <ul class="coments-content">
