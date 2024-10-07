@@ -88,7 +88,7 @@
 				<div class="content">
 					<nav class="responsive-menu">
 						<ul>
-							<li><a href="index-2.php">Home</a></li>
+							<li><a href="index.php">Home</a></li>
 							<li class="menu-item-has-children"><a href="#">Pages</a>
 								<ul class="sub-menu">
 									<li><a href="services.php">Services</a></li>
@@ -97,7 +97,6 @@
 							</li>
 							<li class="menu-item-has-children"><a href="#">Blog</a>
 								<ul class="sub-menu">
-									<li><a href="blog.php">Blog Classic</a></li>
 									<li><a href="blog-grid.php">Blog Grid</a></li>
 									<li><a href="blog-single.php">Single Post</a></li>
 								</ul>

@@ -2,15 +2,17 @@
 include_once 'admin/db.php';
 
 $all = mysqli_query($conn, "select * from imagedetails");
-$all_d = mysqli_fetch_assoc($all);
+$all_d = mysqli_num_rows($all);
 
-if (isset($_GET['id']) && isset($all_d[$_GET['id']])) {
-    $bid = $_GET['blog_id'];
+if (isset($_GET['blog_id'])) {
+    $id = $_GET['blog_id'];
 
-    echo $data;
+    $data = mysqli_query($conn, "select * from imagedetails where id_id='$id'");
+    $row = mysqli_fetch_assoc($data);
+
 }
-$data = mysqli_query($conn, "select * from imagedetails limit 0,1");
-// die();
+
+
 
 ?>
 <?php include_once 'f-header.php' ?>
@@ -30,37 +32,46 @@ $data = mysqli_query($conn, "select * from imagedetails limit 0,1");
     <div class="container">
         <div class="row">
             <div class="col-md-8">
-                <?php while($row=mysqli_fetch_assoc($data)){ ?>
-                <div class="blog-single-item">
-                    <img src="admin/images/<?php echo $row['id_image'];?>" alt="">
-                    <div class="blog-single-content">
-                        <h3><a href="#"><?php echo $row['id_title']; ?></a></h3>
-                        <span><a href="#"><?php echo $row['id_name']; ?></a> / <a href="#"><?php echo $row['id_date']; ?> / <a
-                                href="#"><?php echo $row['id_category']; ?></a></span>
-                        <p><?php echo $row['id_description']; ?> <br><br> <em><i class="fa fa-info"></i>Quis, sequi illo nobis
-                                velit. Quas minima corporis quis laborum, ex odit natus.</em><br><br>Blanditiis possimus
-                            voluptas similique numquam consequatur dolorem labore veritatis quaerat laboriosam, porro
-                            tenetur vel exercitationem laborum aperiam repellat expedita ipsum corrupti perspiciatis!
-                            Quia necessitatibus totam repudiandae ipsam aut repellendus, aspernatur soluta consectetur
-                            aperiam accusantium aliquid beatae nihil magni nulla, similique minus perspiciatis provident
-                            qui veritatis dolorum quasi sint. Quam impedit in eos illum sint officiis reiciendis
-                            repellendus quia, similique ipsa porro accusantium dolores sunt error, ex, tempora et
-                            voluptatibus eveniet. <br><br>Voluptatibus libero laboriosam tempore rerum error non.
-                            Perspiciatis deleniti iste a. Illo ipsum, commodi vel necessitatibus assumenda veritatis a
-                            velit possimus sint!</p>
-                        <div class="share-post">
-                            <span>Share on: <a href="#">facebook</a>, <a href="#">twitter</a>, <a href="#">linkedin</a>,
-                                <a href="#">instagram</a></span>
+                <?php if (@$row) { ?>
+                    <div class="blog-single-item">
+                        <img src="admin/images/<?php echo $row['id_image']; ?>" alt="" width="750px" height="519.88px">
+                        <div class="blog-single-content">
+                            <h3><a href="#"><?php echo $row['id_title']; ?></a></h3>
+                            <span><a href="#"><?php echo $row['id_name']; ?></a> / <a
+                                    href="#"><?php echo $row['id_date']; ?> / <a
+                                        href="#"><?php echo $row['id_category']; ?></a></span>
+                            <p><?php echo $row['id_description']; ?> <br><br> <em><i class="fa fa-info"></i>Quis, sequi illo
+                                    nobis
+                                    velit. Quas minima corporis quis laborum, ex odit natus.</em><br><br>Blanditiis possimus
+                                voluptas similique numquam consequatur dolorem labore veritatis quaerat laboriosam, porro
+                                tenetur vel exercitationem laborum aperiam repellat expedita ipsum corrupti perspiciatis!
+                                Quia necessitatibus totam repudiandae ipsam aut repellendus, aspernatur soluta consectetur
+                                aperiam accusantium aliquid beatae nihil magni nulla, similique minus perspiciatis provident
+                                qui veritatis dolorum quasi sint. Quam impedit in eos illum sint officiis reiciendis
+                                repellendus quia, similique ipsa porro accusantium dolores sunt error, ex, tempora et
+                                voluptatibus eveniet. <br><br>Voluptatibus libero laboriosam tempore rerum error non.
+                                Perspiciatis deleniti iste a. Illo ipsum, commodi vel necessitatibus assumenda veritatis a
+                                velit possimus sint!</p>
+                            <div class="share-post">
+                                <span>Share on: <a href="#">facebook</a>, <a href="#">twitter</a>, <a href="#">linkedin</a>,
+                                    <a href="#">instagram</a></span>
+                            </div>
+                        </div>
+
+                        <div class="prev-btn col-md-6 col-sm-6 col-xs-6">
+                            <?php if ($id > 1) { ?>
+                                <a href="blog-single.php?blog_id=<?php echo $id - 1; ?>"><i
+                                        class="fa fa-angle-left"></i>Previous</a>
+                            <?php } ?>
+                        </div>
+                        <div class="next-btn col-md-6 col-sm-6 col-xs-6">
+                            <?php if ($id < $all_d) { ?>
+                                <a href="blog-single.php?blog_id=<?php echo $id + 1; ?>">Next<i
+                                        class="fa fa-angle-right"></i></a>
+                            <?php } ?>
                         </div>
                     </div>
-                    <div class="prev-btn col-md-6 col-sm-6 col-xs-6">
-                        <a href="#"><i class="fa fa-angle-left"></i>Previous</a>
-                    </div>
-                    <div class="next-btn col-md-6 col-sm-6 col-xs-6">
-                        <a href="#">Next<i class="fa fa-angle-right"></i></a>
-                    </div>
-                </div>
-                <?php }?>
+                <?php } ?>
                 <div class="blog-comments">
                     <h2>7 Comments</h2>
                     <ul class="coments-content">
@@ -129,11 +140,11 @@ $data = mysqli_query($conn, "select * from imagedetails limit 0,1");
                         quaerat facere a rem dolor sit amet, et placeat nemo.</p>
                     <div class="social-icons">
                         <ul>
-                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                            <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                            <li><a href="#"><i class="fa fa-rss"></i></a></li>
+                            <li><a href="#"><i class="fa-brands fa-instagram" style="font-size:1rem;"></i></a></li>
+                            <li><a href="#"><i class="fa-brands fa-twitter" style="font-size:1rem;"></i></a></li>
+                            <li><a href="#"><i class="fa-brands fa-google-plus" style="font-size:1rem;"></i></a></li>
+                            <li><a href="#"><i class="fa-brands fa-whatsapp" style="font-size:1rem;"></i></a></li>
+                            <li><a href="#"><i class="fa-brands fa-rss" style="font-size:1rem;"></i></a></li>
                         </ul>
                     </div>
                 </div>

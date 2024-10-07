@@ -26,11 +26,7 @@
 
     <link rel="stylesheet" href="files/rs-plugin/css/settings.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
-    <![endif]-->
-
+  
 </head>
 
 <body>
@@ -51,7 +47,7 @@
                                 <a href="index.php">YOM</a>
                             </div>
                             <div class="header-right-toggle pull-right hidden-md hidden-lg">
-                                <a href="javascript:void(0)" class="side-menu-button"><i class="fa fa-bars"></i></a>
+                                <a href="javascript:void(0)" class="side-menu-button" style="color:white"><i class="fa fa-bars"></i></a>
                             </div>
                             <nav class="main-navigation pull-right hidden-xs hidden-sm">
                                 <ul>
@@ -62,7 +58,7 @@
                                             <li><a href="clients.php">Clients</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="#" class="has-submenu">Blog</a>
+                                    <li><a href="blog-grid.php" class="has-submenu">Blog</a>
                                         <ul class="sub-menu">
                                             <li><a href="blog-grid.php">Blog Grid</a></li>
                                             <li><a href="blog-single.php">Single Post</a></li>

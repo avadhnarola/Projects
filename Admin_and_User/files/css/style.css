@@ -349,7 +349,8 @@ padding:0
 }
 .footer a
 {
-color:#757575;;
+color:#757575;
+transition: all ease 0.3s;
 }
 .footer a:hover
 {
