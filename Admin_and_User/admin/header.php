@@ -32,11 +32,14 @@ include_once 'db.php';
   <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
+
+  <!-- Bootstrap Icon -->
+   <!-- Option 1: Include in HTML -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
   <style>
-    .bt-srch{
+    .bt-srch {
       border: 1px solid;
       border-color: #ced4da;
-      ;
     }
   </style>
 </head>
@@ -229,11 +232,19 @@ include_once 'db.php';
             <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other i con font library -->
             <li class="nav-item">
-              <a href="#" class="nav-link active">
-              <i class="fa-solid fa-sliders"></i>
+              <a href="#" class="nav-link">
+              <i class="nav-icon  bi bi-house"></i>
+                <p>
+                  Dashboard
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link">
+              <i class="nav-icon bi bi-sliders"></i>
                 <p>
                   Manage Slider
-                  <i class="right fas fa-angle-left"></i>
+                  <i class=" right fas fa-angle-left"></i>
                 </p>
               </a>
               <ul class="nav nav-treeview">
@@ -367,7 +378,7 @@ include_once 'db.php';
                 </li>
               </ul>
             </li>
-            
+
             <li class="nav-item">
               <a href="#" class="nav-link ">
                 <i class="nav-icon fas fa-tachometer-alt"></i>
