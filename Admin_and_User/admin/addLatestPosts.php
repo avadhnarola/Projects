@@ -74,23 +74,23 @@ $categoryData = mysqli_query($conn, "select * from category")
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Title</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1"
+                                    <input required type="text" class="form-control" id="exampleInputEmail1"
                                         placeholder="Enter Title" name="title"
                                         value="<?php echo @$u_data['id_title']; ?>">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Name</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1"
+                                    <input required type="text" class="form-control" id="exampleInputEmail1"
                                         placeholder="Enter Name" name="name" value="<?php echo $a_name; ?>">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Date</label>
-                                    <input type="date" class="form-control" id="exampleInputEmail1"
+                                    <input required type="date" class="form-control" id="exampleInputEmail1"
                                         placeholder="Enter Date" name="date" value="<?php echo @$u_data['id_date']; ?>">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Category</label>
-                                    <select name="category" id="" class="form-control">
+                                    <select name="category" id="" class="form-control" required>
                                         <option value="" disabled>Select Category</option>
                                         <?php while ($row = mysqli_fetch_assoc($categoryData)) { ?>
                                             <option value="<?php echo $row['c_id']; ?>" <?php if (@$u_data['id_category'] == $row['c_id']) {
@@ -103,14 +103,14 @@ $categoryData = mysqli_query($conn, "select * from category")
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Discription</label>
-                                    <input type="text" class="form-control" id="exampleInputPassword1"
+                                    <input required type="text" class="form-control" id="exampleInputPassword1"
                                         placeholder="Enter Discription" name="description"
                                         value="<?php echo @$u_data['id_description']; ?>">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputFile">File input</label>
                                     <div class="input-group form-control">
-                                        <input type="file" id="exampleInputFile" name="image"
+                                        <input required type="file" id="exampleInputFile" name="image"
                                             value="<?php echo @$u_data['id_image']; ?>">
 
                                     </div>

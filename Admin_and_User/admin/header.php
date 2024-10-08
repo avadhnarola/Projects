@@ -32,6 +32,13 @@ include_once 'db.php';
   <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
   <!-- summernote -->
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
+  <style>
+    .bt-srch{
+      border: 1px solid;
+      border-color: #ced4da;
+      ;
+    }
+  </style>
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -184,7 +191,7 @@ include_once 'db.php';
     <!-- /.navbar -->
 
     <!-- Main Sidebar Container -->
-    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <aside class="main-sidebar elevation-4">
       <!-- Brand Logo -->
       <a href="dashboard.php" class="brand-link">
         <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
@@ -209,7 +216,7 @@ include_once 'db.php';
           <div class="input-group" data-widget="sidebar-search">
             <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
             <div class="input-group-append">
-              <button class="btn btn-sidebar">
+              <button class="btn btn-sidebar bt-srch">
                 <i class="fas fa-search fa-fw"></i>
               </button>
             </div>
@@ -222,19 +229,8 @@ include_once 'db.php';
             <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other i con font library -->
             <li class="nav-item">
-
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="dashboard.php" class="nav-link active">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Dashboard </p>
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <li class="nav-item">
               <a href="#" class="nav-link active">
-                <i class="nav-icon fas fa-tachometer-alt"></i>
+              <i class="fa-solid fa-sliders"></i>
                 <p>
                   Manage Slider
                   <i class="right fas fa-angle-left"></i>
@@ -323,30 +319,6 @@ include_once 'db.php';
                 </li>
               </ul>
             </li>
-            <!-- 
-            <li class="nav-item">
-              <a href="#" class="nav-link ">
-                <i class="nav-icon fas fa-tachometer-alt"></i>
-                <p>
-                  Manage Others Saying
-                  <i class="right fas fa-angle-left"></i>
-                </p>
-              </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="addSaying.php" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Add Saying</p>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a href="viewSaying.php" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>View Saying</p>
-                  </a>
-                </li>
-              </ul>
-            </li> -->
 
             <li class="nav-item">
               <a href="#" class="nav-link ">

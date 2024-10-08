@@ -80,7 +80,7 @@ if (isset($_GET['d_id'])) {
                                     <label for="exampleInputEmail1">Category Name</label>
                                     <input type="text" class="form-control" id="exampleInputEmail1"
                                         placeholder="Enter Category" name="c_name"
-                                        value="<?php echo @$u_data['c_name']; ?>">
+                                        value="<?php echo @$u_data['c_name']; ?>" required>
                                 </div>
 
                             </div>

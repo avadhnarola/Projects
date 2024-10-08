@@ -68,19 +68,19 @@ if (isset($_POST['submit'])) {
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Icon</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1"
+                                    <input required type="text" class="form-control" id="exampleInputEmail1"
                                         placeholder="Enter Icon Class Name" name="o_icon" value="<?php echo @$u_data['o_icon']; ?>">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Title</label>
-                                    <input type="text" class="form-control" id="exampleInputPassword1"
+                                    <input required type="text" class="form-control" id="exampleInputPassword1"
                                         placeholder="Enter Title" name="o_title"
                                         value="<?php echo @$u_data['o_title']; ?>">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">Discription</label>
-                                    <input type="text" class="form-control" id="exampleInputPassword1"
+                                    <input required type="text" class="form-control" id="exampleInputPassword1"
                                         placeholder="Enter Discription" name="o_description"
                                         value="<?php echo @$u_data['o_description']; ?>">
                                 </div>

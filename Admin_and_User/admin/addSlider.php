@@ -67,18 +67,18 @@ if (isset($_POST['submit'])) {
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1" >Title</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1"
+                                    <input required type="text" class="form-control" id="exampleInputEmail1"
                                         placeholder="Enter Title" name="title" value="<?php echo @$u_data['title']; ?>">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1" >Discription</label>
-                                    <input type="text" class="form-control" id="exampleInputPassword1"
+                                    <input required type="text" class="form-control" id="exampleInputPassword1"
                                         placeholder="Enter Discription" name="description" value="<?php echo @$u_data['description']; ?>">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputFile">File input</label>
                                     <div class="input-group form-control">
-                                        <input type="file" id="exampleInputFile" name="image" value="<?php echo @$u_data['image']; ?>">
+                                        <input required type="file" id="exampleInputFile" name="image" value="<?php echo @$u_data['image']; ?>">
 
                                     </div>
                                 </div>
