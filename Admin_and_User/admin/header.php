@@ -34,12 +34,23 @@ include_once 'db.php';
   <link rel="stylesheet" href="plugins/summernote/summernote-bs4.min.css">
 
   <!-- Bootstrap Icon -->
-   <!-- Option 1: Include in HTML -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+  <!-- Option 1: Include in HTML -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
   <style>
     .bt-srch {
       border: 1px solid;
       border-color: #ced4da;
+    }
+
+    .logo-txt {
+      color: #313435;
+      letter-spacing: 0.7px;
+      font-size: 22px;
+    }
+
+    .nav-sidebar .nav-link p {
+      margin-left: 14px;
+      color: #72777a;
     }
   </style>
 </head>
@@ -196,23 +207,22 @@ include_once 'db.php';
     <!-- Main Sidebar Container -->
     <aside class="main-sidebar elevation-4">
       <!-- Brand Logo -->
-      <a href="dashboard.php" class="brand-link">
-        <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
-          style="opacity: .8">
-        <span class="brand-text font-weight-light">Admin Panel</span>
+      <a href="dashboard.php" class="brand-link" style="display:inline-flex;align-items:center">
+        <img src="images/logo.webp" alt="AdminLTE Logo" class=" " style="opacity: .8">
+        <span class="brand-text font-weight-bold logo-txt">Admin Panel</span>
       </a>
 
       <!-- Sidebar -->
       <div class="sidebar">
         <!-- Sidebar user panel (optional) -->
-        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <!-- <div class="user-panel mt-3 pb-3 mb-3 d-flex">
           <div class="image">
             <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
           </div>
           <div class="info">
             <a href="#" class="d-block"><?php echo @$_SESSION['admin_name']; ?></a>
           </div>
-        </div>
+        </div> -->
 
         <!-- SidebarSearch Form -->
         <div class="form-inline">
@@ -233,7 +243,7 @@ include_once 'db.php';
                with font-awesome or any other i con font library -->
             <li class="nav-item">
               <a href="#" class="nav-link">
-              <i class="nav-icon  bi bi-house"></i>
+                <i class="nav-icon bi bi-house" style="color:#2196f3;"></i>
                 <p>
                   Dashboard
                 </p>
@@ -241,9 +251,9 @@ include_once 'db.php';
             </li>
             <li class="nav-item">
               <a href="#" class="nav-link">
-              <i class="nav-icon bi bi-sliders"></i>
+                <i class="nav-icon bi bi-sliders" style="color:#795548"></i>
                 <p>
-                  Manage Slider
+                  Slider
                   <i class=" right fas fa-angle-left"></i>
                 </p>
               </a>
@@ -256,16 +266,16 @@ include_once 'db.php';
                 </li>
                 <li class="nav-item">
                   <a href="viewSlider.php" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
+                    <i class="far fa-circle nav-icon" style="color:#795548"></i>
                     <p>View Slider</p>
                   </a>
                 </li>
               </ul>
             <li class="nav-item">
               <a href="#" class="nav-link ">
-                <i class="nav-icon fas fa-tachometer-alt"></i>
+                <i class="nav-icon bi bi-ui-radios-grid" style="color:#ff5722"></i>
                 <p>
-                  Manage Offers
+                  Offers
                   <i class="right fas fa-angle-left"></i>
                 </p>
               </a>
@@ -286,9 +296,9 @@ include_once 'db.php';
             </li>
             <li class="nav-item">
               <a href="#" class="nav-link ">
-                <i class="nav-icon fas fa-tachometer-alt"></i>
+                <i class="nav-icon bi bi-palette" style="color:#673ab7"></i>
                 <p>
-                  Manage About Theme
+                  About Theme
                   <i class="right fas fa-angle-left"></i>
                 </p>
               </a>
@@ -309,9 +319,9 @@ include_once 'db.php';
             </li>
             <li class="nav-item">
               <a href="#" class="nav-link ">
-                <i class="nav-icon fas fa-tachometer-alt"></i>
+                <i class="nav-icon bi bi-images" style="color:#3f51b5"></i>
                 <p>
-                  Manage Recent Photos
+                  Recent Photos
                   <i class="right fas fa-angle-left"></i>
                 </p>
               </a>
@@ -333,9 +343,9 @@ include_once 'db.php';
 
             <li class="nav-item">
               <a href="#" class="nav-link ">
-                <i class="nav-icon fas fa-tachometer-alt"></i>
+                <i class="nav-icon bi bi-stickies" style="color:#f44336"></i>
                 <p>
-                  Manage Latest Posts
+                  Latest Posts
                   <i class="right fas fa-angle-left"></i>
                 </p>
               </a>
@@ -357,9 +367,9 @@ include_once 'db.php';
 
             <li class="nav-item">
               <a href="#" class="nav-link ">
-                <i class="nav-icon fas fa-tachometer-alt"></i>
+                <i class="nav-icon bi bi-people" style="color:#ff9800"></i>
                 <p>
-                  Manage Clients
+                  Clients
                   <i class="right fas fa-angle-left"></i>
                 </p>
               </a>
@@ -380,21 +390,12 @@ include_once 'db.php';
             </li>
 
             <li class="nav-item">
-              <a href="#" class="nav-link ">
-                <i class="nav-icon fas fa-tachometer-alt"></i>
+              <a href="addCategory.php" class="nav-link ">
+                <i class="nav-icon bi bi-list-ul" style="color:#009688"></i>
                 <p>
                   Category
-                  <i class="right fas fa-angle-left"></i>
                 </p>
               </a>
-              <ul class="nav nav-treeview">
-                <li class="nav-item">
-                  <a href="addCategory.php" class="nav-link">
-                    <i class="far fa-circle nav-icon"></i>
-                    <p>Add Category</p>
-                  </a>
-                </li>
-              </ul>
             </li>
 
           </ul>
