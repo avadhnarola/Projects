@@ -131,7 +131,7 @@ if (isset($_GET['blog_id'])) {
                         </div>
                         <div class="submit-coment col-md-12">
                             <div class="btn-black">
-                               <input type="submit" name="submit" value="Submit">
+                               <input type="submit" name="submit" value="Submit" style="color:#fff;">
                             </div>
                         </div>
                     </form>

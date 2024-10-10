@@ -7,7 +7,7 @@ $sliderData = mysqli_query($conn, "select * from slider ORDER BY id DESC LIMIT 3
 $offerData = mysqli_query($conn, "select * from offers order by o_id limit 0,3");
 $themeData = mysqli_query($conn, "select * from abouttheme ORDER BY a_id DESC LIMIT 1");
 $photoData = mysqli_query($conn, "select * from recentphoto ORDER BY rp_id DESC LIMIT 9");
-$sayData = mysqli_query($conn, "select * from saying ORDER BY s_id DESC");
+$comment = mysqli_query($conn, "select * from comment ORDER BY c_id DESC limit 0,9");
 $imgData = mysqli_query($conn, "select * from imagedetails ORDER BY id_id DESC LIMIT 0,3");
 
 
@@ -158,13 +158,13 @@ $imgData = mysqli_query($conn, "select * from imagedetails ORDER BY id_id DESC L
 		<div class="row">
 			<div class="col-md-12">
 				<div id="owl-demo" class="owl-carousel owl-theme">
-					<?php while ($row = mysqli_fetch_assoc($sayData)) { ?>
+					<?php while ($row = mysqli_fetch_assoc($comment)) { ?>
 						<div class="item">
 							<div class="testimonials-post" style="height:200px">
 								<span class="fa fa-quote-left"></span>
-								<p>“ <?php echo $row['s_title'] ?>”</p>
-								<h6><?php echo $row['s_feedbacker']; ?> -
-									<em><?php echo $row['s_place']; ?></em>
+								<p>“ <?php echo $row['c_title'] ?>”</p>
+								<h6><?php echo $row['c_name']; ?> -
+									<em><?php echo $row['c_city']; ?></em>
 								</h6>
 							</div>
 						</div>

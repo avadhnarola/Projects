@@ -1551,9 +1551,10 @@ color:#fff;
   background: #272727;
   color: #ffffff;
   width: 180px;
-  height: 50px;
+  height: 60px;
   text-align: center;
   display: inline-block;
+  align-items: center;
 }
 .btn-black input{
   font-size: 12px;
@@ -1562,7 +1563,7 @@ color:#fff;
   background: #272727;
   color: #ffffff;
   width: 180px;
-  height: 50px;
+  height: 60px;
   text-align: center;
   display: inline-block;
 
