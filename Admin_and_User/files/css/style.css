@@ -1551,10 +1551,9 @@ color:#fff;
   background: #272727;
   color: #ffffff;
   width: 180px;
-  height: 60px;
+  height: 50px;
   text-align: center;
   display: inline-block;
-  line-height: 60px;
 }
 .btn-black input{
   font-size: 12px;
@@ -1563,10 +1562,10 @@ color:#fff;
   background: #272727;
   color: #ffffff;
   width: 180px;
-  height: 60px;
+  height: 50px;
   text-align: center;
   display: inline-block;
-  line-height: 60px;
+
   display: flex;
   align-items: center;
   margin-bottom: 20px;
