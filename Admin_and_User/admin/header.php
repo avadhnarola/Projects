@@ -50,7 +50,14 @@ include_once 'db.php';
 
     .nav-sidebar .nav-link p {
       margin-left: 14px;
+      transition: all ease 0.3s;
       color: #72777a;
+
+    }
+    .nav-sidebar .nav-link p:hover{
+      font-weight: 600;
+      color: #72777f;
+
     }
   </style>
 </head>

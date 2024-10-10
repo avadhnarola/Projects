@@ -4,15 +4,28 @@ include_once 'admin/db.php';
 $all = mysqli_query($conn, "select * from imagedetails");
 $all_d = mysqli_num_rows($all);
 
+if(isset($_POST['submit'])){
+
+    $name=$_POST['name'];
+    $email=$_POST['email'];
+    $city=$_POST['city'];
+    $message=$_POST['message'];
+
+    mysqli_query($conn,"insert into comment(c_name,c_email,c_title,c_city)values('$name','$email','$message','$city')");
+    header("location:blog-single.php");
+}
+
 if (isset($_GET['blog_id'])) {
     $id = $_GET['blog_id'];
+    $_SESSION['id']=$_GET['blog_id'];
 
     $data = mysqli_query($conn, "select * from imagedetails where id_id='$id'");
     $row = mysqli_fetch_assoc($data);
-
 }
+    // $id=@$_SESSION['id'];
 
-
+    // $data = mysqli_query($conn, "select * from imagedetails limit 1");
+    // $row = mysqli_fetch_assoc($data);
 
 ?>
 <?php include_once 'f-header.php' ?>
@@ -105,20 +118,20 @@ if (isset($_GET['blog_id'])) {
                     <h2>Leave A Comment</h2>
                     <form id="contact_form" action="#" method="POST" enctype="multipart/form-data">
                         <div class=" col-md-4 col-sm-4 col-xs-6">
-                            <input type="text" class="blog-search-field" name="s" placeholder="Your name..." value="">
+                            <input type="text" class="blog-search-field" name="name" placeholder="Your name..." value="">
                         </div>
                         <div class="col-md-4 col-sm-4 col-xs-6">
-                            <input type="text" class="blog-search-field" name="s" placeholder="Your email..." value="">
+                            <input type="email" class="blog-search-field" name="email" placeholder="Your email..." value="">
                         </div>
                         <div class="col-md-4 col-sm-4 col-xs-12">
-                            <input type="text" class="subject" name="s" placeholder="Subject..." value="">
+                            <input type="text" class="subject" name="city" placeholder="City..." value="">
                         </div>
                         <div class="col-md-12 col-sm-12">
                             <textarea id="message" class="input" name="message" placeholder="Comment..."></textarea>
                         </div>
                         <div class="submit-coment col-md-12">
                             <div class="btn-black">
-                                <a href="#">Submit now</a>
+                               <input type="submit" name="submit" value="Submit">
                             </div>
                         </div>
                     </form>

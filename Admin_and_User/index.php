@@ -7,7 +7,7 @@ $sliderData = mysqli_query($conn, "select * from slider ORDER BY id DESC LIMIT 3
 $offerData = mysqli_query($conn, "select * from offers order by o_id limit 0,3");
 $themeData = mysqli_query($conn, "select * from abouttheme ORDER BY a_id DESC LIMIT 1");
 $photoData = mysqli_query($conn, "select * from recentphoto ORDER BY rp_id DESC LIMIT 9");
-$sayData = mysqli_query($conn, "select * from saying ORDER BY s_id DESC LIMIT 9");
+$sayData = mysqli_query($conn, "select * from saying ORDER BY s_id DESC");
 $imgData = mysqli_query($conn, "select * from imagedetails ORDER BY id_id DESC LIMIT 0,3");
 
 
