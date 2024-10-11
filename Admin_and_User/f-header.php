@@ -61,7 +61,6 @@
                                     <li><a href="blog-grid.php" class="has-submenu">Blog</a>
                                         <ul class="sub-menu">
                                             <li><a href="blog-grid.php">Blog Grid</a></li>
-                                            <li><a href="blog-single.php">Single Post</a></li>
                                         </ul>
                                     </li>
                                     <li><a href="about.php">About</a></li>

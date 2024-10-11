@@ -22,10 +22,12 @@ if (isset($_GET['blog_id'])) {
     $data = mysqli_query($conn, "select * from imagedetails where id_id='$id'");
     $row = mysqli_fetch_assoc($data);
 }
-    // $id=@$_SESSION['id'];
+else{ 
+    $id=@$id;
+    $data = mysqli_query($conn, "select * from imagedetails where id_id='$id' limit 1 ");
+    $row = mysqli_fetch_assoc($data);
+}
 
-    // $data = mysqli_query($conn, "select * from imagedetails limit 1");
-    // $row = mysqli_fetch_assoc($data);
 
 ?>
 <?php include_once 'f-header.php' ?>
