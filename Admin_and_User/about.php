@@ -1,7 +1,7 @@
 <?php include_once 'admin/db.php';
 include_once 'f-header.php';
 
-$comment = mysqli_query($conn, "select * from comment ORDER BY c_id DESC");
+$comment = mysqli_query($conn, "select * from comment ORDER BY c_id DESC limit 0,9");
 $clientData = mysqli_query($conn, "select * from client limit 0,6");
 
 ?>
@@ -150,3 +150,16 @@ $clientData = mysqli_query($conn, "select * from client limit 0,6");
 include_once 'f-footer.php';
 
 ?>
+
+
+<?php while($row=mysqli_fetch_assoc($comment)){ ?>
+                    <ul class="coments-content">
+                        <li class="first-comment-item">
+                            <img src="files/images/01-author-comment.jpg" alt="">
+                            <span class="author-title"><a href="#"><?php echo $row['c_name']; ?></a></span>
+                            <span class="comment-date">10 May 2015 / <a href="#">Reply</a>
+                            </span>
+                            <p><?php echo $row['c_title']; ?></p>
+                        </li>
+                    </ul>
+                    <?php } ?>

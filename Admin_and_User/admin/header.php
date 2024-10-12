@@ -352,7 +352,7 @@ include_once 'db.php';
               <a href="#" class="nav-link ">
                 <i class="nav-icon bi bi-stickies" style="color:#f44336"></i>
                 <p>
-                  Latest Posts
+                  Latest Blog
                   <i class="right fas fa-angle-left"></i>
                 </p>
               </a>
@@ -360,13 +360,13 @@ include_once 'db.php';
                 <li class="nav-item">
                   <a href="addLatestPosts.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>Add Latest Post</p>
+                    <p>Add Latest BLog</p>
                   </a>
                 </li>
                 <li class="nav-item">
                   <a href="viewLatestPosts.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
-                    <p>View Latest Post</p>
+                    <p>View Latest Blog</p>
                   </a>
                 </li>
               </ul>
