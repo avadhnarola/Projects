@@ -5,22 +5,8 @@ $cur_page = $_SESSION['blog_id'];
 $all = mysqli_query($conn, "select * from imagedetails");
 $all_d = mysqli_num_rows($all);
 $comment = mysqli_query($conn, "select * from comment  where ref_id='$cur_page' ORDER BY c_id DESC limit 0,3");
-
-
 $lastThree = mysqli_query($conn, "select * from imagedetails ORDER BY id_id DESC limit 0,3");
 
-if (isset($_POST['submit'])) {
-
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $city = $_POST['city'];
-    $message = $_POST['message'];
-    $cur_page = $_SESSION['blog_id'];
-
-
-    mysqli_query($conn, "insert into comment(c_name,c_email,c_title,c_city,ref_id)values('$name','$email','$message','$city','$cur_page')");
-    header("location:blog-single.php");
-}
 
 if (isset($_GET['blog_id'])) {
     $id = $_GET['blog_id'];
@@ -31,9 +17,24 @@ if (isset($_GET['blog_id'])) {
     $cur_page = $_SESSION['blog_id'];
 
 }
+
+if (isset($_POST['submit'])) {
+
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $city = $_POST['city'];
+    $message = $_POST['message'];
+    $cur_page = $_SESSION['blog_id'];
+    $img = $_FILES['image']['name'];
+    move_uploaded_file($_FILES['image']['tmp_name'], "images/$img");
+    $date=$_POST['date'];
+
+    mysqli_query($conn, "insert into comment(c_name,c_email,c_title,c_city,ref_id,c_image,date)values('$name','$email','$message','$city','$cur_page','$img','$date')");
+    header("location:blog-single.php?blog_id=$cur_page");
+}
+
 ?>
 <?php include_once 'f-header.php' ?>
-
 
 <section class="page-heading wow fadeIn" data-wow-duration="1.5s"
     style="background-image: url(files/images/01-heading.jpg)">
@@ -95,9 +96,9 @@ if (isset($_GET['blog_id'])) {
                     <?php while ($row = mysqli_fetch_assoc($comment)) { ?>
                         <ul class="coments-content">
                             <li class="first-comment-item">
-                                <img src="files/images/01-author-comment.jpg" alt="">
+                                <img src="images/<?php echo $row['c_image']; ?>" style="height:110px;" alt="">
                                 <span class="author-title"><a href="#"><?php echo $row['c_name']; ?></a></span>
-                                <span class="comment-date">10 May 2015 / <a href="#">Reply</a>
+                                <span class="comment-date"><?php echo $row['date']; ?> / <a href="#">Reply</a>
                                 </span>
                                 <p style="width:683px;"><?php echo $row['c_title']; ?></p>
                             </li>
@@ -118,11 +119,11 @@ if (isset($_GET['blog_id'])) {
                         <div class="col-md-4 col-sm-4 col-xs-12 my-3">
                             <input type="text" class="subject" name="city" placeholder="City..." value="">
                         </div>
-                        <div class=" col-md-4 col-sm-4 col-xs-6">
+                        <div class=" col-md-4 col-sm-4 col-xs-6" style="margin-top:30px;">
                             <input type="date" class="blog-search-field subject" name="date" value="">
                         </div>
-                        <div class="col-md-8 col-sm-4 col-xs-6">
-                            <input type="file" class="blog-search-field" name="image" value="">
+                        <div class="col-md-8 col-sm-4 col-xs-6 file-upload-container" style="margin-top:30px;">
+                            <input type="file" class="blog-search-field subject" name="image" value="">
                         </div>
                         <div class="col-md-12 col-sm-12">
                             <textarea id="message" class="input" name="message" placeholder="Comment..."></textarea>
