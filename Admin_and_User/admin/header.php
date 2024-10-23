@@ -54,7 +54,8 @@ include_once 'db.php';
       color: #72777a;
 
     }
-    .nav-sidebar .nav-link p:hover{
+
+    .nav-sidebar .nav-link p:hover {
       font-weight: 600;
       color: #72777f;
 
@@ -358,13 +359,13 @@ include_once 'db.php';
               </a>
               <ul class="nav nav-treeview">
                 <li class="nav-item">
-                  <a href="addLatestPosts.php" class="nav-link">
+                  <a href="addBlog.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>Add Latest BLog</p>
                   </a>
                 </li>
                 <li class="nav-item">
-                  <a href="viewLatestPosts.php" class="nav-link">
+                  <a href="viewBlog.php" class="nav-link">
                     <i class="far fa-circle nav-icon"></i>
                     <p>View Latest Blog</p>
                   </a>
@@ -401,6 +402,15 @@ include_once 'db.php';
                 <i class="nav-icon bi bi-list-ul" style="color:#009688"></i>
                 <p>
                   Category
+                </p>
+              </a>
+            </li>
+
+            <li class="nav-item">
+              <a href="addWork.php" class="nav-link ">
+                <i class="bi bi-image-alt" style="color:#f44336"></i>
+                <p>
+                  Work
                 </p>
               </a>
             </li>

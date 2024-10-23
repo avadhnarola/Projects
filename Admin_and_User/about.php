@@ -46,7 +46,7 @@ $clientData = mysqli_query($conn, "select * from client limit 0,6");
 				<div id="owl-demo" class="owl-carousel owl-theme">
 					<?php while ($row = mysqli_fetch_assoc($comment)) { ?>
 						<div class="item">
-							<div class="testimonials-post" style="height:200px">
+							<div class="testimonials-post" style="height:250px">
 								<span class="fa fa-quote-left"></span>
 								<p>“ <?php echo $row['c_title'] ?>”</p>
 								<h6><?php echo $row['c_name']; ?> -
@@ -152,14 +152,14 @@ include_once 'f-footer.php';
 ?>
 
 
-<?php while($row=mysqli_fetch_assoc($comment)){ ?>
-                    <ul class="coments-content">
-                        <li class="first-comment-item">
-                            <img src="files/images/01-author-comment.jpg" alt="">
-                            <span class="author-title"><a href="#"><?php echo $row['c_name']; ?></a></span>
-                            <span class="comment-date">10 May 2015 / <a href="#">Reply</a>
-                            </span>
-                            <p><?php echo $row['c_title']; ?></p>
-                        </li>
-                    </ul>
-                    <?php } ?>
+<?php while ($row = mysqli_fetch_assoc($comment)) { ?>
+	<ul class="coments-content">
+		<li class="first-comment-item">
+			<img src="files/images/01-author-comment.jpg" alt="">
+			<span class="author-title"><a href="#"><?php echo $row['c_name']; ?></a></span>
+			<span class="comment-date">10 May 2015 / <a href="#">Reply</a>
+			</span>
+			<p><?php echo $row['c_title']; ?></p>
+		</li>
+	</ul>
+<?php } ?>

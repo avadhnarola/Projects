@@ -196,7 +196,7 @@ $imgData = mysqli_query($conn, "select * from imagedetails ORDER BY id_id DESC L
 				<div class="col-md-4">
 					<a href="#"><img src="admin/images/<?php echo $row['id_image']; ?>" alt="" height="200px"></a>
 					<h3><a href="#"><?php echo $row['id_title']; ?></a></h3>
-					<span><a href="#"><?php echo $row['id_name']; ?></a> / <a href="#"><?php echo $row['id_date']; ?></a> /
+					<span><a href="#"><?php echo $row['id_name']; ?></a> / <a href="#"><?php echo date('d F Y', strtotime($row['id_date'])); ?>					</a> /
 						<a href="#"><?php echo $row['id_category']; ?></a></span>
 					<p><?php echo $row['id_description']; ?></p>
 					<div class="read-more">

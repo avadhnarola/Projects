@@ -37,10 +37,11 @@ $data = mysqli_query($conn, "select * from imagedetails limit $start,$limit");
                         <a href="blog-single.php?blog_id=<?php echo $row['id_id']; ?>"><img
                                 src="admin/images/<?php echo $row['id_image']; ?>" alt=""
                                 style="height:202px; width:360px;"></a>
-                        <h3><a href="blog-single.php?blog_id=<?php echo $row['id_id']; ?>"><?php echo $row['id_title']; ?></a></h3>
+                        <h3><a
+                                href="blog-single.php?blog_id=<?php echo $row['id_id']; ?>"><?php echo $row['id_title']; ?></a>
+                        </h3>
                         <span><a href="#"><?php echo $row['id_name']; ?></a> / <a
-                                href="#"><?php echo $row['id_date']; ?></a> / <a
-                                href="#"><?php echo $row['id_category']; ?></a></span>
+                                href="#"><?php echo date('d F Y', strtotime($row['id_date'])); ?>                                / <a href="#"><?php echo $row['id_category']; ?></a></span>
                         <p><?php echo $row['id_description']; ?></p>
                         <div class="read-more">
                             <a href="blog-single.php">Read more</a>

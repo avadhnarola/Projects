@@ -71,10 +71,10 @@ if (isset($_GET['d_id'])) {
                                             <td><img src="images/<?php echo $row['id_image']; ?>" alt="" height="55px"
                                                     Width="80px"></td>
                                             <td>
-                                                <a href="addLatestPosts.php?u_id=<?php echo $row['id_id']; ?>"><i
+                                                <a href="addBlog.php?u_id=<?php echo $row['id_id']; ?>"><i
                                                         class="fa-regular fa-pen-to-square" style="color:green;"></i></a>
 
-                                                <a href="viewLatestPosts.php?d_id=<?php echo $row['id_id']; ?>"><i
+                                                <a href="viewBlog.php?d_id=<?php echo $row['id_id']; ?>"><i
                                                         class="fa-regular fa-trash-can"
                                                         style="color:red; margin-left:8px;"></i></a>
                                             </td>

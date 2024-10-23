@@ -1,11 +1,12 @@
 <?php
 include_once 'admin/db.php';
-$cur_page = $_SESSION['blog_id'];
+$cur_page = $_GET['blog_id'];
 
 $all = mysqli_query($conn, "select * from imagedetails");
 $all_d = mysqli_num_rows($all);
-$comment = mysqli_query($conn, "select * from comment  where ref_id='$cur_page' ORDER BY c_id DESC limit 0,3");
+$comment = mysqli_query($conn, "select * from comment where ref_id='$cur_page' ORDER BY c_id DESC limit 0,3 ");
 $lastThree = mysqli_query($conn, "select * from imagedetails ORDER BY id_id DESC limit 0,3");
+$all_comment = mysqli_query($conn,"select * from comment where ref_id='$cur_page'");
 
 
 if (isset($_GET['blog_id'])) {
@@ -13,8 +14,8 @@ if (isset($_GET['blog_id'])) {
 
     $data = mysqli_query($conn, "select * from imagedetails where id_id='$id'");
     $row = mysqli_fetch_assoc($data);
-    $_SESSION['blog_id'] = $row['id_id'];
-    $cur_page = $_SESSION['blog_id'];
+    $_GET['blog_id'] = $row['id_id'];
+    $cur_page = $_GET['blog_id'];
 
 }
 
@@ -27,7 +28,7 @@ if (isset($_POST['submit'])) {
     $cur_page = $_SESSION['blog_id'];
     $img = $_FILES['image']['name'];
     move_uploaded_file($_FILES['image']['tmp_name'], "images/$img");
-    $date=$_POST['date'];
+    $date = $_POST['date'];
 
     mysqli_query($conn, "insert into comment(c_name,c_email,c_title,c_city,ref_id,c_image,date)values('$name','$email','$message','$city','$cur_page','$img','$date')");
     header("location:blog-single.php?blog_id=$cur_page");
@@ -57,7 +58,7 @@ if (isset($_POST['submit'])) {
                         <div class="blog-single-content">
                             <h3><a href="#"><?php echo $row['id_title']; ?></a></h3>
                             <span><a href="#"><?php echo $row['id_name']; ?></a> / <a
-                                    href="#"><?php echo $row['id_date']; ?> / <a
+                                    href="#"><?php echo date('d F Y', strtotime($row['id_date'])); ?>                                    / <a
                                         href="#"><?php echo $row['id_category']; ?></a></span>
                             <p><?php echo $row['id_description']; ?> <br><br> <em><i class="fa fa-info"></i>Quis, sequi illo
                                     nobis
@@ -92,13 +93,13 @@ if (isset($_POST['submit'])) {
                     </div>
                 <?php } ?>
                 <div class="blog-comments">
-                    <h2>7 Comments</h2>
+                    <h2><?php echo mysqli_num_rows($all_comment); ?> Comments</h2>
                     <?php while ($row = mysqli_fetch_assoc($comment)) { ?>
                         <ul class="coments-content">
                             <li class="first-comment-item">
                                 <img src="images/<?php echo $row['c_image']; ?>" style="height:110px;" alt="">
                                 <span class="author-title"><a href="#"><?php echo $row['c_name']; ?></a></span>
-                                <span class="comment-date"><?php echo $row['date']; ?> / <a href="#">Reply</a>
+                                <span class="comment-date"><?php echo date('d F Y', strtotime($row['date'])); ?>                                / <a href="#">Reply</a>
                                 </span>
                                 <p style="width:683px;"><?php echo $row['c_title']; ?></p>
                             </li>
@@ -110,23 +111,23 @@ if (isset($_POST['submit'])) {
                     <form id="contact_form" action="#" method="POST" enctype="multipart/form-data">
                         <div class=" col-md-4 col-sm-4 col-xs-6">
                             <input type="text" class="blog-search-field" name="name" placeholder="Your name..."
-                                value="">
+                                value="" required>
                         </div>
                         <div class="col-md-4 col-sm-4 col-xs-6">
                             <input type="email" class="blog-search-field" name="email" placeholder="Your email..."
-                                value="">
+                                value="" required>
                         </div>
                         <div class="col-md-4 col-sm-4 col-xs-12 my-3">
-                            <input type="text" class="subject" name="city" placeholder="City..." value="">
+                            <input type="text" class="subject" name="city" placeholder="City..." value="" required>
                         </div>
                         <div class=" col-md-4 col-sm-4 col-xs-6" style="margin-top:30px;">
-                            <input type="date" class="blog-search-field subject" name="date" value="">
+                            <input type="date" class="blog-search-field subject" name="date" value="" required>
                         </div>
                         <div class="col-md-8 col-sm-4 col-xs-6 file-upload-container" style="margin-top:30px;">
-                            <input type="file" class="blog-search-field subject" name="image" value="">
+                            <input type="file" class="blog-search-field subject" name="image" value="" required>
                         </div>
                         <div class="col-md-12 col-sm-12">
-                            <textarea id="message" class="input" name="message" placeholder="Comment..."></textarea>
+                            <textarea id="message" class="input" name="message" placeholder="Comment..." required></textarea>
                         </div>
                         <div class="submit-coment col-md-12">
                             <div class="btn-black">
@@ -171,7 +172,7 @@ if (isset($_POST['submit'])) {
                                         style="height:70px;width:80px;">
                                     <span class="post-title"><?php echo $row['id_name']; ?></span>
                                 </a>
-                                <span class="post-info" style="width:200px;"><?php echo $row['id_date']; ?></span>
+                                <span class="post-info" style="width:200px;"><?php echo date('d F Y', strtotime($row['id_date'])); ?></span>
                             </li>
                         <?php } ?>
                     </ul>
