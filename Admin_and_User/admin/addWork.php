@@ -145,7 +145,7 @@ if (isset($_GET['d_id'])) {
                                             <td><?php echo $row['w_title']; ?></td>
                                             <td><?php echo $row['w_subtitle']; ?></td>
                                             <td><?php echo $row['w_class']; ?></td>
-                                            <td><?php echo $row['w_image']; ?></td>
+                                            <td><img src="images/<?php echo $row['w_image']; ?>" height="80px" width="100px" alt=""></td>
                                             <td>
                                                 <a href="addWork.php?u_id=<?php echo $row['w_id']; ?>"><i
                                                         class="fa-regular fa-pen-to-square" style="color:green;"></i></a>
