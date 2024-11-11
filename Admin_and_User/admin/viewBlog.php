@@ -12,7 +12,7 @@ $data = mysqli_query($conn, query: "select * from imagedetails");
 if (isset($_GET['d_id'])) {
     $id = $_GET['d_id'];
     mysqli_query($conn, "delete from imagedetails where id_id='$id'");
-    header("location:viewLatestPosts.php");
+    header("location:viewBlog.php");
 }
 
 

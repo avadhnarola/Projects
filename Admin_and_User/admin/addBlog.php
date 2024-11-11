@@ -33,7 +33,7 @@ if (isset($_POST['submit'])) {
     } else {
         mysqli_query($conn, "insert into imagedetails(id_title,id_name,id_date,id_category,id_description,id_image) values('$title','$name','$date','$category','$description','$image')");
     }
-    header("location:addLatestPosts.php");
+    header("location:addBlog.php");
 }
 
 $categoryData = mysqli_query($conn, "select * from category")

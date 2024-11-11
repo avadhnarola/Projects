@@ -5,7 +5,7 @@
 $data = mysqli_query($conn, "select * from work");
 $classes = mysqli_query($conn, "select distinct w_class from work");
 
-$limit = 6;
+$limit = 8;
 $total_data = mysqli_query($conn, "select * from work");
 $total_record = mysqli_num_rows($total_data);
 
@@ -54,10 +54,10 @@ $res = mysqli_query($conn, "select * from work limit $start, $limit");
         <div class="row">
             <div class="row" id="portfolio-grid">
                 <?php while ($row = mysqli_fetch_assoc($res)) { ?>
-                    <div class="item col-md-4 col-sm-6 col-xs-12 <?php echo $row['w_class']; ?>">
+                    <div class="item col-md-3 col-sm-6 col-xs-12 <?php echo $row['w_class']; ?>">
                         <figure>
-                            <img alt="1-image" src="admin/images/<?php echo $row['w_image']; ?>" height="246px"
-                                width="370px">
+                            <img alt="1-image" src="admin/images/<?php echo $row['w_image']; ?>" height="180px"
+                                width="270px">
                             <figcaption>
                                 <h3><?php echo $row['w_title']; ?></h3>
                                 <p><?php echo $row['w_subtitle']; ?></p>
@@ -72,7 +72,7 @@ $res = mysqli_query($conn, "select * from work limit $start, $limit");
                 <ul class="pagination mt-5">
                     <?php if ($page_no > 1) { ?>
                         <li class="page-item">
-                            <a class="page-link" href="work-3columns.php?page_no=<?php echo $page_no - 1; ?>"
+                            <a class="page-link" href="work-4columns.php?page_no=<?php echo $page_no - 1; ?>"
                                 aria-label="Previous">
                                 <span aria-hidden="true">&laquo;</span>
                             </a>
@@ -82,7 +82,7 @@ $res = mysqli_query($conn, "select * from work limit $start, $limit");
                     <?php for ($i = 1; $i <= $t_page; $i++) { ?>
                         <li class="page-item <?php if ($i == $page_no)
                             echo 'active'; ?>">
-                            <a class="page-link" href="work-3columns.php?page_no=<?php echo $i; ?>">
+                            <a class="page-link" href="work-4columns.php?page_no=<?php echo $i; ?>">
                                 <?php echo $i; ?>
                             </a>
                         </li>
@@ -90,7 +90,7 @@ $res = mysqli_query($conn, "select * from work limit $start, $limit");
 
                     <?php if ($page_no < $t_page) { ?>
                         <li class="page-item">
-                            <a class="page-link" href="work-3columns.php?page_no=<?php echo $page_no + 1; ?>"
+                            <a class="page-link" href="work-4columns.php?page_no=<?php echo $page_no + 1; ?>"
                                 aria-label="Next">
                                 <span aria-hidden="true">&raquo;</span>
                             </a>

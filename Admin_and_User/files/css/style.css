@@ -1498,6 +1498,7 @@ color:#fff;
   width: 15px;
   height: 15px;
   background: #272727;
+  display: flex;
 }
 .testimonials-post {
   text-align: center;

@@ -247,10 +247,8 @@ include_once 'db.php';
         <!-- Sidebar Menu -->
         <div class="mt-2">
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-            <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other i con font library -->
             <li class="nav-item">
-              <a href="#" class="nav-link">
+              <a href="dashboard.php" class="nav-link">
                 <i class="nav-icon bi bi-house" style="color:#2196f3;"></i>
                 <p>
                   Dashboard

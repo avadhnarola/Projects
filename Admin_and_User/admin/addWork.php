@@ -39,12 +39,26 @@ $data = mysqli_query($conn, query: "select * from work");
 
 if (isset($_GET['d_id'])) {
     $id = $_GET['d_id'];
-    mysqli_query($conn, "delete from work where c_id='$id'");
+    mysqli_query($conn, "delete from work where w_id='$id'");
     header("location:addWork.php");
 }
 
 
+$limit = 4;
+$total_data = mysqli_query($conn, "select * from work");
+$total_record = mysqli_num_rows($total_data);
 
+$t_page = ceil($total_record / $limit);
+
+if (isset($_GET['page_no'])) {
+    $page_no = $_GET['page_no'];
+} else {
+    $page_no = 1;
+}
+
+$start = ($page_no - 1) * $limit;
+
+$res = mysqli_query($conn, "select * from work limit $start, $limit");
 ?>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
@@ -98,7 +112,7 @@ if (isset($_GET['d_id'])) {
                                         <option value="rooms">Rooms</option>
                                         <option value="swimming">Swimming</option>
                                         <option value="bathroom">Bathroom</option>
-                                        <option value="children play area">Children Play Area</option>
+                                        <option value="children">Children Play Area</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
@@ -140,12 +154,13 @@ if (isset($_GET['d_id'])) {
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <?php while ($row = mysqli_fetch_assoc($data)) { ?>
+                                        <?php while ($row = mysqli_fetch_assoc($res)) { ?>
                                             <td><?php echo $row['w_id']; ?></td>
                                             <td><?php echo $row['w_title']; ?></td>
                                             <td><?php echo $row['w_subtitle']; ?></td>
                                             <td><?php echo $row['w_class']; ?></td>
-                                            <td><img src="images/<?php echo $row['w_image']; ?>" height="80px" width="100px" alt=""></td>
+                                            <td><img src="images/<?php echo $row['w_image']; ?>" height="80px" width="100px"
+                                                    alt=""></td>
                                             <td>
                                                 <a href="addWork.php?u_id=<?php echo $row['w_id']; ?>"><i
                                                         class="fa-regular fa-pen-to-square" style="color:green;"></i></a>
@@ -159,6 +174,37 @@ if (isset($_GET['d_id'])) {
 
                                 </tbody>
                             </table>
+
+                            <nav aria-label="Page navigation example page m-auto">
+                                <ul class="pagination mt-5">
+                                    <?php if ($page_no > 1) { ?>
+                                        <li class="page-item">
+                                            <a class="page-link" href="addWork.php?page_no=<?php echo $page_no - 1; ?>"
+                                                aria-label="Previous">
+                                                <span aria-hidden="true">&laquo;</span>
+                                            </a>
+                                        </li>
+                                    <?php } ?>
+
+                                    <?php for ($i = 1; $i <= $t_page; $i++) { ?>
+                                        <li class="page-item <?php if ($i == $page_no)
+                                            echo 'active'; ?>">
+                                            <a class="page-link" href="addWork.php?page_no=<?php echo $i; ?>">
+                                                <?php echo $i; ?>
+                                            </a>
+                                        </li>
+                                    <?php } ?>
+
+                                    <?php if ($page_no < $t_page) { ?>
+                                        <li class="page-item">
+                                            <a class="page-link" href="addWork.php?page_no=<?php echo $page_no + 1; ?>"
+                                                aria-label="Next">
+                                                <span aria-hidden="true">&raquo;</span>
+                                            </a>
+                                        </li>
+                                    <?php } ?>
+                                </ul>
+                            </nav>
                         </div>
                     </div>
                 </div>
