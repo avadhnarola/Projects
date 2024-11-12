@@ -7,11 +7,8 @@ if (isset($_GET['u_id'])) {
 
     $u_data = mysqli_query($conn, "select * from register where id=$id");
     $u_data = mysqli_fetch_assoc($u_data);
-  
-
 
 }
-
 if (isset($_POST['submit'])) {
     $name = $_POST['name'];
     $password = $_POST['password'];
