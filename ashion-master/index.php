@@ -1,17 +1,18 @@
-<?php 
-    include_once 'header.php';
+<?php
+include_once 'header.php';
+include_once "db.php";
+
 ?>
-    <!-- Categories Section Begin -->
-    <section class="categories">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-6 p-0">
-                    <div class="categories__item categories__large__item set-bg"
-                    data-setbg="img/categories/category-1.jpg">
+<!-- Categories Section Begin -->
+<section class="categories">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6 p-0">
+                <div class="categories__item categories__large__item set-bg" data-setbg="img/categories/category-1.jpg">
                     <div class="categories__text">
                         <h1>Women’s fashion</h1>
                         <p>Sitamet, consectetur adipiscing elit, sed do eiusmod tempor incidid-unt labore
-                        edolore magna aliquapendisse ultrices gravida.</p>
+                            edolore magna aliquapendisse ultrices gravida.</p>
                         <a href="#">Shop now</a>
                     </div>
                 </div>
@@ -87,7 +88,8 @@
                     <div class="product__item__pic set-bg" data-setbg="img/product/product-1.jpg">
                         <div class="label new">New</div>
                         <ul class="product__hover">
-                            <li><a href="img/product/product-1.jpg" class="image-popup"><span class="arrow_expand"></span></a></li>
+                            <li><a href="img/product/product-1.jpg" class="image-popup"><span
+                                        class="arrow_expand"></span></a></li>
                             <li><a href="#"><span class="icon_heart_alt"></span></a></li>
                             <li><a href="#"><span class="icon_bag_alt"></span></a></li>
                         </ul>
@@ -109,7 +111,8 @@
                 <div class="product__item">
                     <div class="product__item__pic set-bg" data-setbg="img/product/product-2.jpg">
                         <ul class="product__hover">
-                            <li><a href="img/product/product-2.jpg" class="image-popup"><span class="arrow_expand"></span></a></li>
+                            <li><a href="img/product/product-2.jpg" class="image-popup"><span
+                                        class="arrow_expand"></span></a></li>
                             <li><a href="#"><span class="icon_heart_alt"></span></a></li>
                             <li><a href="#"><span class="icon_bag_alt"></span></a></li>
                         </ul>
@@ -132,7 +135,8 @@
                     <div class="product__item__pic set-bg" data-setbg="img/product/product-3.jpg">
                         <div class="label stockout">out of stock</div>
                         <ul class="product__hover">
-                            <li><a href="img/product/product-3.jpg" class="image-popup"><span class="arrow_expand"></span></a></li>
+                            <li><a href="img/product/product-3.jpg" class="image-popup"><span
+                                        class="arrow_expand"></span></a></li>
                             <li><a href="#"><span class="icon_heart_alt"></span></a></li>
                             <li><a href="#"><span class="icon_bag_alt"></span></a></li>
                         </ul>
@@ -154,7 +158,8 @@
                 <div class="product__item">
                     <div class="product__item__pic set-bg" data-setbg="img/product/product-4.jpg">
                         <ul class="product__hover">
-                            <li><a href="img/product/product-4.jpg" class="image-popup"><span class="arrow_expand"></span></a></li>
+                            <li><a href="img/product/product-4.jpg" class="image-popup"><span
+                                        class="arrow_expand"></span></a></li>
                             <li><a href="#"><span class="icon_heart_alt"></span></a></li>
                             <li><a href="#"><span class="icon_bag_alt"></span></a></li>
                         </ul>
@@ -176,7 +181,8 @@
                 <div class="product__item">
                     <div class="product__item__pic set-bg" data-setbg="img/product/product-5.jpg">
                         <ul class="product__hover">
-                            <li><a href="img/product/product-5.jpg" class="image-popup"><span class="arrow_expand"></span></a></li>
+                            <li><a href="img/product/product-5.jpg" class="image-popup"><span
+                                        class="arrow_expand"></span></a></li>
                             <li><a href="#"><span class="icon_heart_alt"></span></a></li>
                             <li><a href="#"><span class="icon_bag_alt"></span></a></li>
                         </ul>
@@ -199,7 +205,8 @@
                     <div class="product__item__pic set-bg" data-setbg="img/product/product-6.jpg">
                         <div class="label sale">Sale</div>
                         <ul class="product__hover">
-                            <li><a href="img/product/product-6.jpg" class="image-popup"><span class="arrow_expand"></span></a></li>
+                            <li><a href="img/product/product-6.jpg" class="image-popup"><span
+                                        class="arrow_expand"></span></a></li>
                             <li><a href="#"><span class="icon_heart_alt"></span></a></li>
                             <li><a href="#"><span class="icon_bag_alt"></span></a></li>
                         </ul>
@@ -221,7 +228,8 @@
                 <div class="product__item">
                     <div class="product__item__pic set-bg" data-setbg="img/product/product-7.jpg">
                         <ul class="product__hover">
-                            <li><a href="img/product/product-7.jpg" class="image-popup"><span class="arrow_expand"></span></a></li>
+                            <li><a href="img/product/product-7.jpg" class="image-popup"><span
+                                        class="arrow_expand"></span></a></li>
                             <li><a href="#"><span class="icon_heart_alt"></span></a></li>
                             <li><a href="#"><span class="icon_bag_alt"></span></a></li>
                         </ul>
@@ -244,7 +252,8 @@
                     <div class="product__item__pic set-bg" data-setbg="img/product/product-8.jpg">
                         <div class="label">Sale</div>
                         <ul class="product__hover">
-                            <li><a href="img/product/product-8.jpg" class="image-popup"><span class="arrow_expand"></span></a></li>
+                            <li><a href="img/product/product-8.jpg" class="image-popup"><span
+                                        class="arrow_expand"></span></a></li>
                             <li><a href="#"><span class="icon_heart_alt"></span></a></li>
                             <li><a href="#"><span class="icon_bag_alt"></span></a></li>
                         </ul>
@@ -612,6 +621,6 @@
 <!-- Instagram End -->
 
 
-<?php 
-    include_once 'footer.php';
+<?php
+include_once 'footer.php';
 ?>
