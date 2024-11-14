@@ -211,7 +211,7 @@ include_once "db.php";
                             <li><a href="#"><span class="icon_bag_alt"></span></a></li>
                         </ul>
                     </div>
-                    <div class="product__item__text">
+                    <div class="product__item__text women">
                         <h6><a href="#">Tropical Kimono</a></h6>
                         <div class="rating">
                             <i class="fa fa-star"></i>
@@ -234,7 +234,7 @@ include_once "db.php";
                             <li><a href="#"><span class="icon_bag_alt"></span></a></li>
                         </ul>
                     </div>
-                    <div class="product__item__text">
+                    <div class="product__item__text women">
                         <h6><a href="#">Contrasting sunglasses</a></h6>
                         <div class="rating">
                             <i class="fa fa-star"></i>
@@ -258,7 +258,7 @@ include_once "db.php";
                             <li><a href="#"><span class="icon_bag_alt"></span></a></li>
                         </ul>
                     </div>
-                    <div class="product__item__text">
+                    <div class="product__item__text men">
                         <h6><a href="#">Water resistant backpack</a></h6>
                         <div class="rating">
                             <i class="fa fa-star"></i>
