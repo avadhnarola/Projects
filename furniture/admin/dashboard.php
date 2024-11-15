@@ -1,6 +1,10 @@
 <?php 
 
   include_once 'header.php';
+
+  if(isset($_SESSION['admin_id'])){
+    header("location:dashboard.php");
+  }
 ?>
           <!-- Content wrapper -->
           <div class="content-wrapper">

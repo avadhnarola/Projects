@@ -1,6 +1,5 @@
 <?php
 include_once 'header.php';
-
 ?>
 
 <!-- Start Hero Section -->
@@ -12,15 +11,11 @@ include_once 'header.php';
 					<h1>Cart</h1>
 				</div>
 			</div>
-			<div class="col-lg-7">
-
-			</div>
+			<div class="col-lg-7"></div>
 		</div>
 	</div>
 </div>
 <!-- End Hero Section -->
-
-
 
 <div class="untree_co-section before-footer-section">
 	<div class="container">
@@ -46,7 +41,7 @@ include_once 'header.php';
 								<td class="product-name">
 									<h2 class="h5 text-black">Product 1</h2>
 								</td>
-								<td>$49.00</td>
+								<td class="product-price" data-price="49.00">$49.00</td>
 								<td>
 									<div class="input-group mb-3 d-flex align-items-center quantity-container"
 										style="max-width: 120px;">
@@ -61,9 +56,8 @@ include_once 'header.php';
 											<button class="btn btn-outline-black increase" type="button">&plus;</button>
 										</div>
 									</div>
-
 								</td>
-								<td>$49.00</td>
+								<td class="product-total">$49.00</td>
 								<td><a href="#" class="btn btn-black btn-sm">X</a></td>
 							</tr>
 
@@ -74,7 +68,7 @@ include_once 'header.php';
 								<td class="product-name">
 									<h2 class="h5 text-black">Product 2</h2>
 								</td>
-								<td>$49.00</td>
+								<td class="product-price" data-price="49.00">$49.00</td>
 								<td>
 									<div class="input-group mb-3 d-flex align-items-center quantity-container"
 										style="max-width: 120px;">
@@ -89,9 +83,8 @@ include_once 'header.php';
 											<button class="btn btn-outline-black increase" type="button">&plus;</button>
 										</div>
 									</div>
-
 								</td>
-								<td>$49.00</td>
+								<td class="product-total">$49.00</td>
 								<td><a href="#" class="btn btn-black btn-sm">X</a></td>
 							</tr>
 						</tbody>
@@ -136,7 +129,7 @@ include_once 'header.php';
 								<span class="text-black">Subtotal</span>
 							</div>
 							<div class="col-md-6 text-right">
-								<strong class="text-black">$230.00</strong>
+								<strong class="text-black" id="subtotal">$98.00</strong>
 							</div>
 						</div>
 						<div class="row mb-5">
@@ -144,7 +137,7 @@ include_once 'header.php';
 								<span class="text-black">Total</span>
 							</div>
 							<div class="col-md-6 text-right">
-								<strong class="text-black">$230.00</strong>
+								<strong class="text-black" id="total">$98.00</strong>
 							</div>
 						</div>
 
@@ -161,8 +154,44 @@ include_once 'header.php';
 	</div>
 </div>
 
+<script>
+	document.querySelectorAll('.increase, .decrease').forEach(button => {
+		button.addEventListener('click', function () {
+			const quantityInput = this.closest('.quantity-container').querySelector('.quantity-amount');
+			const productRow = this.closest('tr');
+			const priceElement = productRow.querySelector('.product-price');
+			const totalElement = productRow.querySelector('.product-total');
+
+			let quantity = parseInt(quantityInput.value);
+			const price = parseFloat(priceElement.getAttribute('data-price'));
+
+			if (this.classList.contains('increase')) {
+				quantity++;
+			} else if (this.classList.contains('decrease') && quantity > 1) {
+				quantity--;
+			}
+
+			quantityInput.value = quantity;
+			const newTotal = (quantity * price).toFixed(2);
+			totalElement.textContent = `$${newTotal}`;
+
+			updateCartTotal();
+		});
+	});
+
+	function updateCartTotal() {
+		let subtotal = 0;
+
+		document.querySelectorAll('.product-total').forEach(totalElement => {
+			const productTotal = parseFloat(totalElement.textContent.replace('$', ''));
+			subtotal += productTotal;
+		});
+
+		document.getElementById('subtotal').textContent = `$${subtotal.toFixed(2)}`;
+		document.getElementById('total').textContent = `$${subtotal.toFixed(2)}`;
+	}
+</script>
 
 <?php
 include_once 'footer.php';
-
 ?>
