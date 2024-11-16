@@ -1,14 +1,21 @@
 <?php
 include_once 'db.php';
+ob_start();
 include_once 'header.php';
+
+
+
+// if(isset($_SESSION['admin_id'])){
+//     header("location:dashboard.php");
+// }
 
 if (isset($_POST['submit'])) {
     $name = $_POST['name'];
     $amount = $_POST['amount'];
     $image = $_FILES['image']['name'];
-    move_uploaded_file($_FILES['image']['tmp_name'],"product-image/$image");
+    move_uploaded_file($_FILES['image']['tmp_name'], "product-image/$image");
 
-    mysqli_query($conn,"insert into product(name,amount,image) values('$name','$amount','$image')");
+    mysqli_query($conn, "insert into product(name,amount,image) values('$name','$amount','$image')");
     header("location:add-Product.php");
 }
 ?>
@@ -21,24 +28,23 @@ if (isset($_POST['submit'])) {
 
                     <form class="form" method="post" enctype="multipart/form-data">
                         <div class="form-body">
-                            <h1 class="text-center">Product Form</h1>
+                            <h3 class="text-center">Product Form</h3>
 
-                            <div class="form-group my-2">
-                                <label for="donationinput3" class="sr-only mb-2">Name</label>
+                            <div class="form-group mt-2">
+                                <label for="donationinput3" class="sr-only mb-1 mt-4">Name</label>
                                 <input type="text" name="name" id="donationinput3" class="form-control"
                                     placeholder="Name.." required>
                             </div>
 
                             <div class="form-group">
-                                <label for="donationinput4" class="sr-only  mb-2 mt-3">Amount</label>
+                                <label for="donationinput4" class="sr-only  mb-1 mt-4">Amount</label>
                                 <input type="text" name="amount" id="donationinput4" class="form-control"
-                                    placeholder="Amount"  required>
+                                    placeholder="Amount" required>
                             </div>
 
                             <div class="form-group">
-                                <label for="donationinput4" class="sr-only  mb-2 mt-3">Product Image</label>
-                                <input type="file" name="image" id="donationinput4" class="form-control"
-                                    required>
+                                <label for="donationinput4" class="sr-only  mb-1 mt-4">Product Image</label>
+                                <input type="file" name="image" id="donationinput4" class="form-control" required>
                             </div>
 
 
@@ -52,6 +58,11 @@ if (isset($_POST['submit'])) {
             </div>
         </div>
     </div>
-    
+
 </div>
 
+<div class="pt-5 mt-5">
+    <?php
+    include_once 'footer.php';
+    ?>
+</div>
