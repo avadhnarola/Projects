@@ -2,7 +2,7 @@
 include_once 'admin/db.php';
 include_once 'header.php';
 
-$product_data = mysqli_query($conn, "select * from product");
+$product_data = mysqli_query($conn, "select * from product ORDER BY p_id DESC limit 0,3");
 
 ?>
 
@@ -47,9 +47,9 @@ $product_data = mysqli_query($conn, "select * from product");
 			<?php while ($row = mysqli_fetch_assoc($product_data)) { ?>
 				<div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
 					<a class="product-item" href="cart.html">
-						<img src="admin/product-image/<?php echo $row['image']; ?>" class="img-fluid product-thumbnail">
+						<img src="admin/product-image/<?php echo $row['image']; ?>" class="img-fluid product-thumbnail" style="height:261px; width:230px;">
 						<h3 class="product-title"><?php echo $row['name']; ?></h3>
-						<strong class="product-price"><?php echo $row['amount']; ?></strong>
+						<strong class="product-price">$<?php echo $row['amount']; ?>.00</strong>
 
 						<span class="icon-cross">
 						<img src="images/cross.svg" class="img-fluid">

@@ -8,6 +8,12 @@ if (!isset($_SESSION['admin_id'])) {
     exit;
 }
 
+if(isset($_GET['d_id'])){
+    $delete_id = $_GET['d_id'];
+
+    mysqli_query($conn,"delete from product where p_id = '$delete_id'");
+}
+
 $product_data = mysqli_query($conn, "select * from product");
 ?>
 <div class="content-wrapper">
