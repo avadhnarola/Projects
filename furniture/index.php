@@ -46,7 +46,7 @@ $product_data = mysqli_query($conn, "select * from product ORDER BY p_id DESC li
 			<!-- Start Column 2 -->
 			<?php while ($row = mysqli_fetch_assoc($product_data)) { ?>
 				<div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
-					<a class="product-item" href="cart.html">
+					<a class="product-item" href="cart.php">
 						<img src="admin/product-image/<?php echo $row['image']; ?>" class="img-fluid product-thumbnail" style="height:261px; width:261px;">
 						<h3 class="product-title"><?php echo $row['name']; ?></h3>
 						<strong class="product-price">$<?php echo $row['amount']; ?>.00</strong>

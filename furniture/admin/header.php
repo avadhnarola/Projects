@@ -146,20 +146,20 @@ ob_start();
             </ul>
           </li>
           <li class="menu-item">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
+            <a href="add-Blog.php" class="menu-link menu-toggle">
               <i class="menu-icon tf-icons bx bx-box"></i>
-              <div class="text-truncate" data-i18n="Product">Feedback</div>
+              <div class="text-truncate" data-i18n="Product">Blog</div>
             </a>
 
             <ul class="menu-sub">
               <li class="menu-item">
-                <a href="add-feedback.php" class="menu-link">
-                  <div class="text-truncate" data-i18n="Without menu">Add Feedback</div>
+                <a href="add-Blog.php" class="menu-link">
+                  <div class="text-truncate" data-i18n="Without menu">Add Blog</div>
                 </a>
               </li>
               <li class="menu-item">
-                <a href="view-feedback.php" class="menu-link">
-                  <div class="text-truncate" data-i18n="Without navbar">View Feedback</div>
+                <a href="view-Blog.php" class="menu-link">
+                  <div class="text-truncate" data-i18n="Without navbar">View Blog</div>
                 </a>
               </li>
             </ul>
