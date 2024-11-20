@@ -1,5 +1,6 @@
 <?php
 ob_start();
+include_once 'db.php';
 ?>
 <!doctype html>
 
@@ -159,6 +160,26 @@ ob_start();
               <li class="menu-item">
                 <a href="view-Blog.php" class="menu-link">
                   <div class="text-truncate" data-i18n="Without navbar">View Blog</div>
+                </a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="menu-item">
+            <a href="add-Services.php" class="menu-link menu-toggle">
+              <i class="menu-icon tf-icons bx bx-badge-check"></i>
+              <div class="text-truncate" data-i18n="Product">Services</div>
+            </a>
+
+            <ul class="menu-sub">
+              <li class="menu-item">
+                <a href="add-Services.php" class="menu-link">
+                  <div class="text-truncate" data-i18n="Without menu">Add Service</div>
+                </a>
+              </li>
+              <li class="menu-item">
+                <a href="view-Services.php" class="menu-link">
+                  <div class="text-truncate" data-i18n="Without navbar">View Service</div>
                 </a>
               </li>
             </ul>

@@ -435,8 +435,8 @@ a.more {
   position: absolute;
   background: rgba(59, 93, 80, 0.2);
   border-radius: 50%;
-  right: -8px;
-  bottom: 0;
+  right: -12px;
+  bottom: -8px;
 }
 
 .feature h3 {

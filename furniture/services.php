@@ -1,5 +1,6 @@
 <?php
 include_once 'header.php';
+$service_data = mysqli_query($conn,"select * from service");
 
 ?>
 
@@ -34,85 +35,20 @@ include_once 'header.php';
 
 
 		<div class="row my-5">
-			<div class="col-6 col-md-6 col-lg-3 mb-4">
-				<div class="feature">
-					<div class="icon">
-						<img src="images/truck.svg" alt="Image" class="imf-fluid">
+			<?php while ($row = mysqli_fetch_assoc($service_data)) { ?>
+				
+				<div class="col-6 col-md-6 col-lg-3 mb-4">
+					<div class="feature">
+						<div class="icon">
+							<img src="admin/service-images/<?php echo $row['image']; ?>" alt="Image" class="imf-fluid" style="height:36px; width:38px;">
+						</div>
+						<h3><?php echo $row['title']; ?></h3>
+						<p><?php echo $row['description']; ?></p>
 					</div>
-					<h3>Fast &amp; Free Shipping</h3>
-					<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.</p>
 				</div>
-			</div>
+			<?php } ?>
 
-			<div class="col-6 col-md-6 col-lg-3 mb-4">
-				<div class="feature">
-					<div class="icon">
-						<img src="images/bag.svg" alt="Image" class="imf-fluid">
-					</div>
-					<h3>Easy to Shop</h3>
-					<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.</p>
-				</div>
-			</div>
-
-			<div class="col-6 col-md-6 col-lg-3 mb-4">
-				<div class="feature">
-					<div class="icon">
-						<img src="images/support.svg" alt="Image" class="imf-fluid">
-					</div>
-					<h3>24/7 Support</h3>
-					<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.</p>
-				</div>
-			</div>
-
-			<div class="col-6 col-md-6 col-lg-3 mb-4">
-				<div class="feature">
-					<div class="icon">
-						<img src="images/return.svg" alt="Image" class="imf-fluid">
-					</div>
-					<h3>Hassle Free Returns</h3>
-					<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.</p>
-				</div>
-			</div>
-
-			<div class="col-6 col-md-6 col-lg-3 mb-4">
-				<div class="feature">
-					<div class="icon">
-						<img src="images/truck.svg" alt="Image" class="imf-fluid">
-					</div>
-					<h3>Fast &amp; Free Shipping</h3>
-					<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.</p>
-				</div>
-			</div>
-
-			<div class="col-6 col-md-6 col-lg-3 mb-4">
-				<div class="feature">
-					<div class="icon">
-						<img src="images/bag.svg" alt="Image" class="imf-fluid">
-					</div>
-					<h3>Easy to Shop</h3>
-					<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.</p>
-				</div>
-			</div>
-
-			<div class="col-6 col-md-6 col-lg-3 mb-4">
-				<div class="feature">
-					<div class="icon">
-						<img src="images/support.svg" alt="Image" class="imf-fluid">
-					</div>
-					<h3>24/7 Support</h3>
-					<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.</p>
-				</div>
-			</div>
-
-			<div class="col-6 col-md-6 col-lg-3 mb-4">
-				<div class="feature">
-					<div class="icon">
-						<img src="images/return.svg" alt="Image" class="imf-fluid">
-					</div>
-					<h3>Hassle Free Returns</h3>
-					<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.</p>
-				</div>
-			</div>
+			
 
 		</div>
 
