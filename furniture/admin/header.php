@@ -117,8 +117,7 @@ ob_start();
             </a>
           </li> -->
           <li class="menu-item active">
-            <a href="dashboard.php"
-               class="menu-link">
+            <a href="dashboard.php" class="menu-link">
               <i class="menu-icon tf-icons bx bx-home-smile"></i>
               <div class="text-truncate" data-i18n="Dashboard">Dashboard</div>
               <!-- <div class="badge rounded-pill bg-label-primary text-uppercase fs-tiny ms-auto">Pro</div> -->
@@ -147,7 +146,7 @@ ob_start();
           </li>
           <li class="menu-item">
             <a href="add-Blog.php" class="menu-link menu-toggle">
-              <i class="menu-icon tf-icons bx bx-box"></i>
+              <i class="menu-icon tf-icons bx bx-food-menu"></i>
               <div class="text-truncate" data-i18n="Product">Blog</div>
             </a>
 
@@ -302,3 +301,19 @@ ob_start();
         </nav>
 
         <!-- / Navbar -->
+        <script>
+          // JavaScript to handle the active class toggle
+          document.addEventListener("DOMContentLoaded", function () {
+            const menuItems = document.querySelectorAll("#menu-list .menu-item");
+
+            menuItems.forEach((item) => {
+              item.addEventListener("click", function () {
+                // Remove the active class from all items
+                menuItems.forEach((el) => el.classList.remove("active"));
+
+                // Add the active class to the clicked item
+                this.classList.add("active");
+              });
+            });
+          });
+        </script>

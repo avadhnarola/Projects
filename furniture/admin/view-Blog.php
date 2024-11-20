@@ -41,8 +41,8 @@ $blog_data = mysqli_query($conn, "select * from blog");
                                 <td><span><?php echo $row['b_id']; ?></span></td>
                                 <td><?php echo $row['title']; ?></td>
                                 <td><?php echo $row['name']; ?></td>
-                                <td><?php echo $row['date']; ?>.00</td>
-                                <td><img src="../admin/blog-image/<?php echo $row['image']; ?>"
+                                <td><?php echo $row['date']; ?></td>
+                                <td><img src="../admin/blog-images/<?php echo $row['image']; ?>"
                                         class="img-fluid product-thumbnail" alt="blog image" height="30px;"
                                         width="30px;"></td>
                                 <td>
@@ -53,10 +53,10 @@ $blog_data = mysqli_query($conn, "select * from blog");
                                         </button>
                                         <div class="dropdown-menu">
                                             <a class="dropdown-item"
-                                                href="add-product.php?u_id=<?php echo $row['p_id']; ?>"><i
+                                                href="add-blog.php?u_id=<?php echo $row['b_id']; ?>"><i
                                                     class="bx bx-edit-alt me-1"></i> Edit</a>
                                             <a class="dropdown-item"
-                                                href="view-product.php?d_id=<?php echo $row['p_id']; ?>"><i
+                                                href="view-blog.php?d_id=<?php echo $row['b_id']; ?>"><i
                                                     class="bx bx-trash me-1"></i> Delete</a>
                                         </div>
                                     </div>

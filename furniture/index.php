@@ -3,6 +3,8 @@ include_once 'admin/db.php';
 include_once 'header.php';
 
 $product_data = mysqli_query($conn, "select * from product ORDER BY p_id DESC limit 0,3");
+$blog_data = mysqli_query($conn, "select * from blog ORDER BY b_id DESC limit 0,3");
+
 
 ?>
 
@@ -47,12 +49,13 @@ $product_data = mysqli_query($conn, "select * from product ORDER BY p_id DESC li
 			<?php while ($row = mysqli_fetch_assoc($product_data)) { ?>
 				<div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
 					<a class="product-item" href="cart.php">
-						<img src="admin/product-image/<?php echo $row['image']; ?>" class="img-fluid product-thumbnail" style="height:261px; width:261px;">
+						<img src="admin/product-image/<?php echo $row['image']; ?>" class="img-fluid product-thumbnail"
+							style="height:261px; width:261px;">
 						<h3 class="product-title"><?php echo $row['name']; ?></h3>
 						<strong class="product-price">$<?php echo $row['amount']; ?>.00</strong>
 
 						<span class="icon-cross">
-						<img src="images/cross.svg" class="img-fluid">
+							<img src="images/cross.svg" class="img-fluid">
 						</span>
 					</a>
 				</div>
@@ -362,44 +365,26 @@ $product_data = mysqli_query($conn, "select * from product ORDER BY p_id DESC li
 		</div>
 
 		<div class="row">
-
-			<div class="col-12 col-sm-6 col-md-4 mb-4 mb-md-0">
-				<div class="post-entry">
-					<a href="#" class="post-thumbnail"><img src="images/post-1.jpg" alt="Image" class="img-fluid"></a>
-					<div class="post-content-entry">
-						<h3><a href="#">First Time Home Owner Ideas</a></h3>
-						<div class="meta">
-							<span>by <a href="#">Kristin Watson</a></span> <span>on <a href="#">Dec 19, 2021</a></span>
+			<?php while ($row = mysqli_fetch_assoc($blog_data)) {
+				// Convert date from database format to desired format
+				$formattedDate = date("M d, Y", strtotime($row['date']));
+				?>
+				<div class="col-12 col-sm-6 col-md-4 mb-4 mb-md-0">
+					<div class="post-entry">
+						<a href="#" class="post-thumbnail"><img src="admin/blog-images/<?php echo $row['image']; ?>"
+								alt="Image" class="img-fluid" style="height: 246px; width: 356px;"></a>
+						<div class="post-content-entry">
+							<h3><a href="#"><?php echo $row['title']; ?></a></h3>
+							<div class="meta">
+								<span>by <a href="#"><?php echo $row['name']; ?></a></span>
+								<span>on <a href="#"><?php echo $formattedDate; ?></a></span>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-
-			<div class="col-12 col-sm-6 col-md-4 mb-4 mb-md-0">
-				<div class="post-entry">
-					<a href="#" class="post-thumbnail"><img src="images/post-2.jpg" alt="Image" class="img-fluid"></a>
-					<div class="post-content-entry">
-						<h3><a href="#">How To Keep Your Furniture Clean</a></h3>
-						<div class="meta">
-							<span>by <a href="#">Robert Fox</a></span> <span>on <a href="#">Dec 15, 2021</a></span>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-12 col-sm-6 col-md-4 mb-4 mb-md-0">
-				<div class="post-entry">
-					<a href="#" class="post-thumbnail"><img src="images/post-3.jpg" alt="Image" class="img-fluid"></a>
-					<div class="post-content-entry">
-						<h3><a href="#">Small Space Furniture Apartment Ideas</a></h3>
-						<div class="meta">
-							<span>by <a href="#">Kristin Watson</a></span> <span>on <a href="#">Dec 12, 2021</a></span>
-						</div>
-					</div>
-				</div>
-			</div>
-
+			<?php } ?>
 		</div>
+
 	</div>
 </div>
 <!-- End Blog Section -->
