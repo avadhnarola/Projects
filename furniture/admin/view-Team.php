@@ -1,24 +1,23 @@
 <?php
 include_once 'header.php';
 
-
 if (!isset($_SESSION['admin_id'])) {
-
     header("location:index.php");
     exit;
 }
 
-if(isset($_GET['d_id'])){
+// Delete operation
+if (isset($_GET['d_id'])) {
     $delete_id = $_GET['d_id'];
-
-    mysqli_query($conn,"delete from team where t_id = '$delete_id'");
+    mysqli_query($conn, "DELETE FROM team WHERE t_id = '$delete_id'");
 }
 
-$team_data = mysqli_query($conn, "select * from team");
+// Fetch team data with proper JOIN
+$team_data = mysqli_query($conn, "SELECT team.t_id, team.name, designation.name AS designation, team.description, team.image FROM team INNER JOIN designation ON team.designation = designation.d_id");
 ?>
+
 <div class="content-wrapper">
     <!-- Content -->
-
     <div class="container-xxl flex-grow-1 container-p-y">
         <!-- Basic Bootstrap Table -->
         <div class="card">
@@ -36,15 +35,16 @@ $team_data = mysqli_query($conn, "select * from team");
                         </tr>
                     </thead>
                     <tbody class="table-border-bottom-0">
-                        <tr>
-                            <?php while ($row = mysqli_fetch_assoc($team_data)) { ?>
-                                <td><span><?php echo $row['t_id']; ?></span></td>
+                        <?php while ($row = mysqli_fetch_assoc($team_data)) { ?>
+                            <tr>
+                                <td><?php echo $row['t_id']; ?></td>
                                 <td><?php echo $row['name']; ?></td>
                                 <td><?php echo $row['designation']; ?></td>
                                 <td><?php echo $row['description']; ?></td>
-                                <td><img src="../admin/team-images/<?php echo $row['image']; ?>"
-                                        class="img-fluid product-thumbnail" alt="team image" height="30px;"
-                                        width="30px;"></td>
+                                <td>
+                                    <img src="../admin/team-images/<?php echo $row['image']; ?>"
+                                        class="img-fluid product-thumbnail" alt="team image" height="30" width="30">
+                                </td>
                                 <td>
                                     <div class="dropdown">
                                         <button type="button" class="btn p-0 dropdown-toggle hide-arrow"
@@ -52,12 +52,12 @@ $team_data = mysqli_query($conn, "select * from team");
                                             <i class="bx bx-dots-vertical-rounded"></i>
                                         </button>
                                         <div class="dropdown-menu">
-                                            <a class="dropdown-item"
-                                                href="add-Team.php?u_id=<?php echo $row['t_id']; ?>"><i
-                                                    class="bx bx-edit-alt me-1"></i> Edit</a>
-                                            <a class="dropdown-item"
-                                                href="view-Team.php?d_id=<?php echo $row['t_id']; ?>"><i
-                                                    class="bx bx-trash me-1"></i> Delete</a>
+                                            <a class="dropdown-item" href="add-Team.php?u_id=<?php echo $row['t_id']; ?>">
+                                                <i class="bx bx-edit-alt me-1"></i> Edit
+                                            </a>
+                                            <a class="dropdown-item" href="view-Team.php?d_id=<?php echo $row['t_id']; ?>">
+                                                <i class="bx bx-trash me-1"></i> Delete
+                                            </a>
                                         </div>
                                     </div>
                                 </td>
@@ -69,8 +69,6 @@ $team_data = mysqli_query($conn, "select * from team");
         </div>
     </div>
 </div>
-
-
 
 <?php
 include_once 'footer.php';

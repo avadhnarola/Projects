@@ -1,7 +1,8 @@
 <?php
 include_once 'header.php';
 $service_data = mysqli_query($conn, "select * from service limit 0,4");
-
+// $team_data = mysqli_query($conn, "select * from team limit 0,4");
+$team_data = mysqli_query($conn, "SELECT team.t_id, team.name, designation.name AS designation, team.description, team.image FROM team INNER JOIN designation ON team.designation = designation.d_id limit 0,4");
 
 ?>
 <!-- Start Hero Section -->
@@ -82,16 +83,16 @@ $service_data = mysqli_query($conn, "select * from service limit 0,4");
 		<div class="row">
 
 			<!-- Start Column 1 -->
-			<div class="col-12 col-md-6 col-lg-3 mb-5 mb-md-0">
-				<img src="images/person_1.jpg" class="img-fluid mb-5">
-				<h3 clas><a href="#"><span class="">Lawson</span> Arnold</a></h3>
-				<span class="d-block position mb-4">CEO, Founder, Atty.</span>
-				<p>Separated they live in.
-					Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.
-				</p>
-				<p class="mb-0"><a href="#" class="more dark">Learn More <span class="icon-arrow_forward"></span></a>
-				</p>
-			</div>
+			<?php while ($row = mysqli_fetch_assoc($team_data)) { ?>
+				<div class="col-12 col-md-6 col-lg-3 mb-5 mb-md-0">
+					<img src="admin/team-images/<?php echo $row['image']; ?>" class="img-fluid mb-5">
+					<h3 clas><a href="#"><span class=""><?php echo $row['name']; ?></span></a></h3>
+					<span class="d-block position mb-4"><?php echo $row['designation']; ?></span>
+					<p><?php echo $row['description']; ?></p>
+					<p class="mb-0"><a href="#" class="more dark">Learn More <span class="icon-arrow_forward"></span></a>
+					</p>
+				</div>
+			<?php } ?>
 			<!-- End Column 1 -->
 
 			<!-- Start Column 2 -->
