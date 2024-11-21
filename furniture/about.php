@@ -1,5 +1,7 @@
 <?php
 include_once 'header.php';
+$service_data = mysqli_query($conn, "select * from service limit 0,4");
+
 
 ?>
 <!-- Start Hero Section -->
@@ -37,56 +39,27 @@ include_once 'header.php';
 					imperdiet dolor tempor tristique.</p>
 
 				<div class="row my-5">
-					<div class="col-6 col-md-6">
-						<div class="feature">
-							<div class="icon">
-								<img src="images/truck.svg" alt="Image" class="imf-fluid">
-							</div>
-							<h3>Fast &amp; Free Shipping</h3>
-							<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.
-							</p>
-						</div>
-					</div>
+					<?php while ($row = mysqli_fetch_assoc($service_data)) { ?>
 
-					<div class="col-6 col-md-6">
-						<div class="feature">
-							<div class="icon">
-								<img src="images/bag.svg" alt="Image" class="imf-fluid">
+						<div class="col-6 col-md-6">
+							<div class="feature">
+								<div class="icon">
+									<img src="admin/service-images/<?php echo $row['image']; ?>" alt="Image"
+										class="imf-fluid" style="height:36px; width:38px;">
+								</div>
+								<h3><?php echo $row['title']; ?></h3>
+								<p><?php echo $row['description']; ?></p>
 							</div>
-							<h3>Easy to Shop</h3>
-							<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.
-							</p>
 						</div>
-					</div>
-
-					<div class="col-6 col-md-6">
-						<div class="feature">
-							<div class="icon">
-								<img src="images/support.svg" alt="Image" class="imf-fluid">
-							</div>
-							<h3>24/7 Support</h3>
-							<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.
-							</p>
-						</div>
-					</div>
-
-					<div class="col-6 col-md-6">
-						<div class="feature">
-							<div class="icon">
-								<img src="images/return.svg" alt="Image" class="imf-fluid">
-							</div>
-							<h3>Hassle Free Returns</h3>
-							<p>Donec vitae odio quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate.
-							</p>
-						</div>
-					</div>
+					<?php } ?>
 
 				</div>
 			</div>
 
 			<div class="col-lg-5">
 				<div class="img-wrap">
-					<img src="images/why-choose-us-img.jpg" alt="Image" class="img-fluid">
+					<img src="admin/blog-images/pexels-fotoaibe-1571460.jpg" alt="Image" class="img-fluid"
+						style="width:451px; height: 516px;">
 				</div>
 			</div>
 
@@ -99,9 +72,10 @@ include_once 'header.php';
 <div class="untree_co-section">
 	<div class="container">
 
-		<div class="row mb-5">
-			<div class="col-lg-5 mx-auto text-center">
-				<h2 class="section-title">Our Team</h2>
+		<div class="container mt-5 text-center mb-5">
+			<h3 class="section-title">Our Team</h3>
+			<div class="d-flex justify-content-center" style="margin-top:-10px;">
+				<hr width="100px" class="text-center">
 			</div>
 		</div>
 

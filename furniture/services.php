@@ -1,6 +1,8 @@
 <?php
 include_once 'header.php';
-$service_data = mysqli_query($conn,"select * from service");
+$service_data = mysqli_query($conn, "select * from service");
+$product_data = mysqli_query($conn, "select * from product ORDER BY p_id DESC limit 0,3");
+
 
 ?>
 
@@ -32,26 +34,21 @@ $service_data = mysqli_query($conn,"select * from service");
 <!-- Start Why Choose Us Section -->
 <div class="why-choose-section">
 	<div class="container">
-
-
 		<div class="row my-5">
 			<?php while ($row = mysqli_fetch_assoc($service_data)) { ?>
-				
+
 				<div class="col-6 col-md-6 col-lg-3 mb-4">
 					<div class="feature">
 						<div class="icon">
-							<img src="admin/service-images/<?php echo $row['image']; ?>" alt="Image" class="imf-fluid" style="height:36px; width:38px;">
+							<img src="admin/service-images/<?php echo $row['image']; ?>" alt="Image" class="imf-fluid"
+								style="height:36px; width:38px;">
 						</div>
 						<h3><?php echo $row['title']; ?></h3>
 						<p><?php echo $row['description']; ?></p>
 					</div>
 				</div>
 			<?php } ?>
-
-			
-
 		</div>
-
 	</div>
 </div>
 <!-- End Why Choose Us Section -->
@@ -71,47 +68,21 @@ $service_data = mysqli_query($conn,"select * from service");
 			<!-- End Column 1 -->
 
 			<!-- Start Column 2 -->
-			<div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
-				<a class="product-item" href="#">
-					<img src="images/product-1.png" class="img-fluid product-thumbnail">
-					<h3 class="product-title">Nordic Chair</h3>
-					<strong class="product-price">$50.00</strong>
+			<?php while ($row = mysqli_fetch_assoc($product_data)) { ?>
+				<div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
+					<a class="product-item" href="cart.php">
+						<img src="admin/product-image/<?php echo $row['image']; ?>" class="img-fluid product-thumbnail"
+							style="height:261px; width:261px;">
+						<h3 class="product-title"><?php echo $row['name']; ?></h3>
+						<strong class="product-price">$<?php echo $row['amount']; ?>.00</strong>
 
-					<span class="icon-cross">
-						<img src="images/cross.svg" class="img-fluid">
-					</span>
-				</a>
-			</div>
+						<span class="icon-cross">
+							<img src="images/cross.svg" class="img-fluid">
+						</span>
+					</a>
+				</div>
+			<?php } ?>
 			<!-- End Column 2 -->
-
-			<!-- Start Column 3 -->
-			<div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
-				<a class="product-item" href="#">
-					<img src="images/product-2.png" class="img-fluid product-thumbnail">
-					<h3 class="product-title">Kruzo Aero Chair</h3>
-					<strong class="product-price">$78.00</strong>
-
-					<span class="icon-cross">
-						<img src="images/cross.svg" class="img-fluid">
-					</span>
-				</a>
-			</div>
-			<!-- End Column 3 -->
-
-			<!-- Start Column 4 -->
-			<div class="col-12 col-md-4 col-lg-3 mb-5 mb-md-0">
-				<a class="product-item" href="#">
-					<img src="images/product-3.png" class="img-fluid product-thumbnail">
-					<h3 class="product-title">Ergonomic Chair</h3>
-					<strong class="product-price">$43.00</strong>
-
-					<span class="icon-cross">
-						<img src="images/cross.svg" class="img-fluid">
-					</span>
-				</a>
-			</div>
-			<!-- End Column 4 -->
-
 		</div>
 	</div>
 </div>

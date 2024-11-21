@@ -185,47 +185,32 @@ include_once 'db.php';
             </ul>
           </li>
 
-          <!-- Front Pages -->
           <li class="menu-item">
-            <a href="javascript:void(0);" class="menu-link menu-toggle">
-              <i class="menu-icon tf-icons bx bx-store"></i>
-              <div class="text-truncate" data-i18n="Front Pages">Front Pages</div>
-              <div class="badge rounded-pill bg-label-primary text-uppercase fs-tiny ms-auto">Pro</div>
+            <a href="add-Team.php" class="menu-link menu-toggle">
+              <i class="menu-icon tf-icons bx bx-user-circle"></i>
+              <div class="text-truncate" data-i18n="Product">Team</div>
             </a>
+
             <ul class="menu-sub">
               <li class="menu-item">
-                <a href="https://demos.themeselection.com/sneat-bootstrap-html-admin-template/html/front-pages/landing-page.html"
-                  class="menu-link" target="_blank">
-                  <div class="text-truncate" data-i18n="Landing">Landing</div>
+                <a href="add-Team.php" class="menu-link">
+                  <div class="text-truncate" data-i18n="Without menu">Add Member</div>
                 </a>
               </li>
               <li class="menu-item">
-                <a href="https://demos.themeselection.com/sneat-bootstrap-html-admin-template/html/front-pages/pricing-page.html"
-                  class="menu-link" target="_blank">
-                  <div class="text-truncate" data-i18n="Pricing">Pricing</div>
-                </a>
-              </li>
-              <li class="menu-item">
-                <a href="https://demos.themeselection.com/sneat-bootstrap-html-admin-template/html/front-pages/payment-page.html"
-                  class="menu-link" target="_blank">
-                  <div class="text-truncate" data-i18n="Payment">Payment</div>
-                </a>
-              </li>
-              <li class="menu-item">
-                <a href="https://demos.themeselection.com/sneat-bootstrap-html-admin-template/html/front-pages/checkout-page.html"
-                  class="menu-link" target="_blank">
-                  <div class="text-truncate" data-i18n="Checkout">Checkout</div>
-                </a>
-              </li>
-              <li class="menu-item">
-                <a href="https://demos.themeselection.com/sneat-bootstrap-html-admin-template/html/front-pages/help-center-landing.html"
-                  class="menu-link" target="_blank">
-                  <div class="text-truncate" data-i18n="Help Center">Help Center</div>
+                <a href="view-Team.php" class="menu-link">
+                  <div class="text-truncate" data-i18n="Without navbar">View Member</div>
                 </a>
               </li>
             </ul>
           </li>
 
+          <li class="menu-item">
+            <a href="designation.php" class="menu-link">
+              <i class="menu-icon tf-icons bx bx-list-ul"></i>
+              <div class="text-truncate" data-i18n="Without navbar">Designation</div>
+            </a>
+          </li>
         </ul>
       </aside>
       <!-- / Menu -->
