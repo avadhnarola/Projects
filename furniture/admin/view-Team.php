@@ -53,10 +53,10 @@ $team_data = mysqli_query($conn, "select * from team");
                                         </button>
                                         <div class="dropdown-menu">
                                             <a class="dropdown-item"
-                                                href="add-teams.php?u_id=<?php echo $row['s_id']; ?>"><i
+                                                href="add-Team.php?u_id=<?php echo $row['t_id']; ?>"><i
                                                     class="bx bx-edit-alt me-1"></i> Edit</a>
                                             <a class="dropdown-item"
-                                                href="view-teams.php?d_id=<?php echo $row['s_id']; ?>"><i
+                                                href="view-Team.php?d_id=<?php echo $row['t_id']; ?>"><i
                                                     class="bx bx-trash me-1"></i> Delete</a>
                                         </div>
                                     </div>

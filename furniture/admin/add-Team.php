@@ -29,6 +29,7 @@ if (isset($_POST['submit'])) {
         header("location:add-Team.php");
     }
 }
+$desigData = mysqli_query($conn, "select * from designation");
 ?>
 <div class="content-wrapper">
     <div class="mt-5">
@@ -43,19 +44,28 @@ if (isset($_POST['submit'])) {
                                 <div class="form-group mt-2">
                                     <label for="donationinput3" class="sr-only mb-1 mt-4">Name</label>
                                     <input type="text" name="name" id="donationinput3" class="form-control"
-                                           placeholder="Name.." required value="<?php echo @$u_data['name']; ?>">
+                                        placeholder="Name.." required value="<?php echo @$u_data['name']; ?>">
                                 </div>
 
                                 <div class="form-group">
                                     <label for="donationinput4" class="sr-only mb-1 mt-4">Designation</label>
-                                    <input type="text" name="designation" id="donationinput4" class="form-control"
-                                           placeholder="Designation" required value="<?php echo @$u_data['designation']; ?>">
+                                    <select name="designation" id="" class="form-control" required>
+                                        <option value="" disabled>Select Designation</option>
+                                        <?php while ($row = mysqli_fetch_assoc($desigData)) { ?>
+                                            <option value="<?php echo $row['d_id']; ?>" <?php if (@$u_data['designation'] == $row['d_id']) {
+                                                   echo "selected"; // Select the current category if it matches
+                                               } ?>>
+                                                <?php echo $row['name']; ?>
+                                            </option>
+                                        <?php } ?>
+                                    </select>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="donationinput4" class="sr-only mb-1 mt-4">Description</label>
                                     <input type="text" name="description" id="donationinput4" class="form-control"
-                                           placeholder="Description" required value="<?php echo @$u_data['description']; ?>">
+                                        placeholder="Description" required
+                                        value="<?php echo @$u_data['description']; ?>">
                                 </div>
 
                                 <div class="form-group">
@@ -64,7 +74,8 @@ if (isset($_POST['submit'])) {
                                 </div>
 
                                 <div class="center d-flex mt-5" style="justify-content: center">
-                                    <button type="submit" name="submit" class="btn btn-outline-primary mt-1">Submit</button>
+                                    <button type="submit" name="submit"
+                                        class="btn btn-outline-primary mt-1">Submit</button>
                                 </div>
                         </form>
                     </div>
