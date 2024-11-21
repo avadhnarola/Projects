@@ -36,7 +36,6 @@ $product_data = mysqli_query($conn, "select * from product ORDER BY p_id DESC li
 	<div class="container">
 		<div class="row my-5">
 			<?php while ($row = mysqli_fetch_assoc($service_data)) { ?>
-
 				<div class="col-6 col-md-6 col-lg-3 mb-4">
 					<div class="feature">
 						<div class="icon">
