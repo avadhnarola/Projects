@@ -3,7 +3,7 @@ include_once 'header.php';
 $service_data = mysqli_query($conn, "select * from service limit 0,4");
 // $team_data = mysqli_query($conn, "select * from team limit 0,4");
 $team_data = mysqli_query($conn, "SELECT team.t_id, team.name, designation.name AS designation, team.description, team.image FROM team INNER JOIN designation ON team.designation = designation.d_id limit 0,4");
-$teams_data = mysqli_query($conn, "SELECT team.t_id, team.name, designation.name AS designation, team.description, team.image FROM team INNER JOIN designation ON team.designation = designation.d_id");
+$testimonials = mysqli_query($conn, "SELECT team.t_id, team.name, designation.name AS designation, team.description, team.image FROM team INNER JOIN designation ON team.designation = designation.d_id");
 ?>
 <!-- Start Hero Section -->
 <div class="hero">
@@ -89,7 +89,7 @@ $teams_data = mysqli_query($conn, "SELECT team.t_id, team.name, designation.name
 						style="height:261px;width:261px;">
 					<h3 clas><a href="#"><span class=""><?php echo $row['name']; ?></span></a></h3>
 					<span class="d-block position mb-4"><?php echo $row['designation']; ?>.</span>
-					<p><?php echo $row['description']; ?></p>
+					<p style="height:112px;width:261px;"><?php echo $row['description']; ?></p>
 					<p class="mb-0"><a href="#" class="more dark">Learn More <span class="icon-arrow_forward"></span></a>
 					</p>
 				</div>
@@ -121,16 +121,17 @@ $teams_data = mysqli_query($conn, "SELECT team.t_id, team.name, designation.name
 
 					<div class="testimonial-slider">
 
-						<?php while ($row = mysqli_fetch_assoc($teams_data)) { ?>
+						<?php while ($row = mysqli_fetch_assoc($testimonials)) { ?>
 							<div class="item">
 								<div class="row justify-content-center">
 									<div class="col-lg-8 mx-auto">
 
 										<div class="testimonial-block text-center">
-
-											<blockquote class="mb-5">
-												<p>&ldquo;<?php echo $row['description']; ?>&rdquo;</p>
-											</blockquote>
+											<i>
+												<blockquote class="mb-5">
+													<p>&ldquo;<?php echo $row['description']; ?>&rdquo;</p>
+												</blockquote>
+											</i>
 
 											<div class="author-info">
 												<div class="author-pic">

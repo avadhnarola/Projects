@@ -1,5 +1,6 @@
 <?php
 include_once 'header.php';
+$product = mysqli_query($conn, "select * from product");
 ?>
 
 <!-- Start Hero Section -->
@@ -34,59 +35,30 @@ include_once 'header.php';
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td class="product-thumbnail">
-									<img src="images/product-1.png" alt="Image" class="img-fluid">
-								</td>
-								<td class="product-name">
-									<h2 class="h5 text-black">Product 1</h2>
-								</td>
-								<td class="product-price" data-price="49.00">$49.00</td>
-								<td>
-									<div class="input-group mb-3 d-flex align-items-center quantity-container"
-										style="max-width: 120px;">
-										<div class="input-group-prepend">
-											<button class="btn btn-outline-black decrease"
-												type="button">&minus;</button>
+							<?php while ($row = mysqli_fetch_assoc($product)) { ?>
+								<tr>
+									<td class="product-thumbnail">
+										<img src="admin/product-image/<?php echo $row['image']; ?>" alt="Image" class="img-fluid" style="height:160px; width:160px;">
+									</td>
+									<td class="product-name">
+										<h2 class="h5 text-black"><?php echo $row['name']; ?></h2>
+									</td>
+									<td class="product-price" data-price="<?php echo $row['amount']; ?>">$<?php echo $row['amount']; ?></td>
+									<td>
+										<div class="input-group mb-3 d-flex align-items-center quantity-container" style="max-width: 120px;">
+											<div class="input-group-prepend">
+												<button class="btn btn-outline-black decrease" type="button">&minus;</button>
+											</div>
+											<input type="text" class="form-control text-center quantity" value="1" readonly>
+											<div class="input-group-append">
+												<button class="btn btn-outline-black increase" type="button">&plus;</button>
+											</div>
 										</div>
-										<input type="text" class="form-control text-center quantity-amount" value="1"
-											placeholder="" aria-label="Example text with button addon"
-											aria-describedby="button-addon1">
-										<div class="input-group-append">
-											<button class="btn btn-outline-black increase" type="button">&plus;</button>
-										</div>
-									</div>
-								</td>
-								<td class="product-total">$49.00</td>
-								<td><a href="#" class="btn btn-black btn-sm">X</a></td>
-							</tr>
-
-							<tr>
-								<td class="product-thumbnail">
-									<img src="images/product-2.png" alt="Image" class="img-fluid">
-								</td>
-								<td class="product-name">
-									<h2 class="h5 text-black">Product 2</h2>
-								</td>
-								<td class="product-price" data-price="49.00">$49.00</td>
-								<td>
-									<div class="input-group mb-3 d-flex align-items-center quantity-container"
-										style="max-width: 120px;">
-										<div class="input-group-prepend">
-											<button class="btn btn-outline-black decrease"
-												type="button">&minus;</button>
-										</div>
-										<input type="text" class="form-control text-center quantity-amount" value="1"
-											placeholder="" aria-label="Example text with button addon"
-											aria-describedby="button-addon1">
-										<div class="input-group-append">
-											<button class="btn btn-outline-black increase" type="button">&plus;</button>
-										</div>
-									</div>
-								</td>
-								<td class="product-total">$49.00</td>
-								<td><a href="#" class="btn btn-black btn-sm">X</a></td>
-							</tr>
+									</td>
+									<td class="product-total">$<?php echo $row['amount']; ?></td>
+									<td><a href="#" class="btn btn-black btn-sm remove">X</a></td>
+								</tr>
+							<?php } ?>
 						</tbody>
 					</table>
 				</div>
@@ -100,7 +72,7 @@ include_once 'header.php';
 						<button class="btn btn-black btn-sm btn-block">Update Cart</button>
 					</div>
 					<div class="col-md-6">
-						<button class="btn btn-outline-black btn-sm btn-block">Continue Shopping</button>
+						<a class="btn btn-outline-black btn-sm btn-block" href="shop.php">Continue Shopping</a>
 					</div>
 				</div>
 				<div class="row">
@@ -112,7 +84,7 @@ include_once 'header.php';
 						<input type="text" class="form-control py-3" id="coupon" placeholder="Coupon Code">
 					</div>
 					<div class="col-md-4">
-						<button class="btn btn-black">Apply Coupon</button>
+						<button class="btn btn-black" style="width:180px;">Apply Coupon</button>
 					</div>
 				</div>
 			</div>
@@ -129,7 +101,7 @@ include_once 'header.php';
 								<span class="text-black">Subtotal</span>
 							</div>
 							<div class="col-md-6 text-right">
-								<strong class="text-black" id="subtotal">$98.00</strong>
+								<strong class="text-black" id="subtotal">$0.00</strong>
 							</div>
 						</div>
 						<div class="row mb-5">
@@ -137,14 +109,13 @@ include_once 'header.php';
 								<span class="text-black">Total</span>
 							</div>
 							<div class="col-md-6 text-right">
-								<strong class="text-black" id="total">$98.00</strong>
+								<strong class="text-black" id="total">$0.00</strong>
 							</div>
 						</div>
 
 						<div class="row">
 							<div class="col-md-12">
-								<button class="btn btn-black btn-lg py-3 btn-block"
-									onclick="window.location='checkout.html'">Proceed To Checkout</button>
+								<button class="btn btn-black btn-lg py-3 btn-block" onclick="window.location='checkout.php'">Proceed To Checkout</button>
 							</div>
 						</div>
 					</div>
@@ -157,7 +128,7 @@ include_once 'header.php';
 <script>
 	document.querySelectorAll('.increase, .decrease').forEach(button => {
 		button.addEventListener('click', function () {
-			const quantityInput = this.closest('.quantity-container').querySelector('.quantity-amount');
+			const quantityInput = this.closest('.quantity-container').querySelector('.quantity');
 			const productRow = this.closest('tr');
 			const priceElement = productRow.querySelector('.product-price');
 			const totalElement = productRow.querySelector('.product-total');
@@ -167,15 +138,32 @@ include_once 'header.php';
 
 			if (this.classList.contains('increase')) {
 				quantity++;
-			} else if (this.classList.contains('decrease') && quantity > 1) {
+			} else if (this.classList.contains('decrease')) {
 				quantity--;
+				if (quantity <= 0) {
+					productRow.remove();
+					updateCartTotal();
+					return;
+				}
 			}
 
 			quantityInput.value = quantity;
-			const newTotal = (quantity * price).toFixed(2);
-			totalElement.textContent = `$${newTotal}`;
+			totalElement.textContent = `$${(quantity * price).toFixed(2)}`;
 
 			updateCartTotal();
+		});
+	});
+
+	document.querySelectorAll('.remove').forEach(button => {
+		button.addEventListener('click', function (e) {
+			e.preventDefault();
+
+			// Show confirmation popup
+			if (confirm("Are you sure you want to remove this item from your cart?")) {
+				const productRow = this.closest('tr');
+				productRow.remove();
+				updateCartTotal();
+			}
 		});
 	});
 

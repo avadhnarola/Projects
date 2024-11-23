@@ -5,6 +5,8 @@ include_once 'header.php';
 $product_data = mysqli_query($conn, "select * from product ORDER BY p_id DESC limit 0,3");
 $blog_data = mysqli_query($conn, "select * from blog ORDER BY b_id DESC limit 0,3");
 $service_data = mysqli_query($conn, "select * from service limit 0,4");
+$testimonials = mysqli_query($conn, "SELECT team.t_id, team.name, designation.name AS designation, team.description, team.image FROM team INNER JOIN designation ON team.designation = designation.d_id");
+
 
 
 
@@ -207,87 +209,32 @@ $service_data = mysqli_query($conn, "select * from service limit 0,4");
 					</div>
 
 					<div class="testimonial-slider">
+						<?php while ($row = mysqli_fetch_assoc($testimonials)) { ?>
+							<div class="item">
+								<div class="row justify-content-center">
+									<div class="col-lg-8 mx-auto">
 
-						<div class="item">
-							<div class="row justify-content-center">
-								<div class="col-lg-8 mx-auto">
+										<div class="testimonial-block text-center">
+											<i>
+												<blockquote class="mb-5">
+													<p>&ldquo;<?php echo $row['description']; ?>&rdquo;</p>
+												</blockquote>
+											</i>
 
-									<div class="testimonial-block text-center">
-										<blockquote class="mb-5">
-											<p>&ldquo;Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio
-												quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate
-												velit imperdiet dolor tempor tristique. Pellentesque habitant morbi
-												tristique senectus et netus et malesuada fames ac turpis egestas.
-												Integer convallis volutpat dui quis scelerisque.&rdquo;</p>
-										</blockquote>
-
-										<div class="author-info">
-											<div class="author-pic">
-												<img src="images/person-1.png" alt="Maria Jones" class="img-fluid">
+											<div class="author-info">
+												<div class="author-pic">
+													<img src="admin/team-images/<?php echo $row['image']; ?>"
+														alt="<?php echo $row['name']; ?>" class="img-fluid">
+												</div>
+												<h3 class="font-weight-bold"><?php echo $row['name']; ?></h3>
+												<span
+													class="position d-block mb-3"><?php echo $row['designation']; ?>.</span>
 											</div>
-											<h3 class="font-weight-bold">Maria Jones</h3>
-											<span class="position d-block mb-3">CEO, Co-Founder, XYZ Inc.</span>
 										</div>
 									</div>
-
 								</div>
 							</div>
-						</div>
-						<!-- END item -->
-
-						<div class="item">
-							<div class="row justify-content-center">
-								<div class="col-lg-8 mx-auto">
-
-									<div class="testimonial-block text-center">
-										<blockquote class="mb-5">
-											<p>&ldquo;Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio
-												quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate
-												velit imperdiet dolor tempor tristique. Pellentesque habitant morbi
-												tristique senectus et netus et malesuada fames ac turpis egestas.
-												Integer convallis volutpat dui quis scelerisque.&rdquo;</p>
-										</blockquote>
-
-										<div class="author-info">
-											<div class="author-pic">
-												<img src="images/person-1.png" alt="Maria Jones" class="img-fluid">
-											</div>
-											<h3 class="font-weight-bold">Maria Jones</h3>
-											<span class="position d-block mb-3">CEO, Co-Founder, XYZ Inc.</span>
-										</div>
-									</div>
-
-								</div>
-							</div>
-						</div>
-						<!-- END item -->
-
-						<div class="item">
-							<div class="row justify-content-center">
-								<div class="col-lg-8 mx-auto">
-
-									<div class="testimonial-block text-center">
-										<blockquote class="mb-5">
-											<p>&ldquo;Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio
-												quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate
-												velit imperdiet dolor tempor tristique. Pellentesque habitant morbi
-												tristique senectus et netus et malesuada fames ac turpis egestas.
-												Integer convallis volutpat dui quis scelerisque.&rdquo;</p>
-										</blockquote>
-
-										<div class="author-info">
-											<div class="author-pic">
-												<img src="images/person-1.png" alt="Maria Jones" class="img-fluid">
-											</div>
-											<h3 class="font-weight-bold">Maria Jones</h3>
-											<span class="position d-block mb-3">CEO, Co-Founder, XYZ Inc.</span>
-										</div>
-									</div>
-
-								</div>
-							</div>
-						</div>
-						<!-- END item -->
+						<?php } ?>
 
 					</div>
 
