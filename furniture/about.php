@@ -3,7 +3,7 @@ include_once 'header.php';
 $service_data = mysqli_query($conn, "select * from service limit 0,4");
 // $team_data = mysqli_query($conn, "select * from team limit 0,4");
 $team_data = mysqli_query($conn, "SELECT team.t_id, team.name, designation.name AS designation, team.description, team.image FROM team INNER JOIN designation ON team.designation = designation.d_id limit 0,4");
-
+$teams_data = mysqli_query($conn, "SELECT team.t_id, team.name, designation.name AS designation, team.description, team.image FROM team INNER JOIN designation ON team.designation = designation.d_id");
 ?>
 <!-- Start Hero Section -->
 <div class="hero">
@@ -85,62 +85,15 @@ $team_data = mysqli_query($conn, "SELECT team.t_id, team.name, designation.name 
 			<!-- Start Column 1 -->
 			<?php while ($row = mysqli_fetch_assoc($team_data)) { ?>
 				<div class="col-12 col-md-6 col-lg-3 mb-5 mb-md-0">
-					<img src="admin/team-images/<?php echo $row['image']; ?>" class="img-fluid mb-5">
+					<img src="admin/team-images/<?php echo $row['image']; ?>" class="img-fluid mb-5"
+						style="height:261px;width:261px;">
 					<h3 clas><a href="#"><span class=""><?php echo $row['name']; ?></span></a></h3>
-					<span class="d-block position mb-4"><?php echo $row['designation']; ?></span>
+					<span class="d-block position mb-4"><?php echo $row['designation']; ?>.</span>
 					<p><?php echo $row['description']; ?></p>
 					<p class="mb-0"><a href="#" class="more dark">Learn More <span class="icon-arrow_forward"></span></a>
 					</p>
 				</div>
 			<?php } ?>
-			<!-- End Column 1 -->
-
-			<!-- Start Column 2 -->
-			<div class="col-12 col-md-6 col-lg-3 mb-5 mb-md-0">
-				<img src="images/person_2.jpg" class="img-fluid mb-5">
-
-				<h3 clas><a href="#"><span class="">Jeremy</span> Walker</a></h3>
-				<span class="d-block position mb-4">CEO, Founder, Atty.</span>
-				<p>Separated they live in.
-					Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.
-				</p>
-				<p class="mb-0"><a href="#" class="more dark">Learn More <span class="icon-arrow_forward"></span></a>
-				</p>
-
-			</div>
-			<!-- End Column 2 -->
-
-			<!-- Start Column 3 -->
-			<div class="col-12 col-md-6 col-lg-3 mb-5 mb-md-0">
-				<img src="images/person_3.jpg" class="img-fluid mb-5">
-				<h3 clas><a href="#"><span class="">Patrik</span> White</a></h3>
-				<span class="d-block position mb-4">CEO, Founder, Atty.</span>
-				<p>Separated they live in.
-					Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.
-				</p>
-				<p class="mb-0"><a href="#" class="more dark">Learn More <span class="icon-arrow_forward"></span></a>
-				</p>
-			</div>
-			<!-- End Column 3 -->
-
-			<!-- Start Column 4 -->
-			<div class="col-12 col-md-6 col-lg-3 mb-5 mb-md-0">
-				<img src="images/person_4.jpg" class="img-fluid mb-5">
-
-				<h3 clas><a href="#"><span class="">Kathryn</span> Ryan</a></h3>
-				<span class="d-block position mb-4">CEO, Founder, Atty.</span>
-				<p>Separated they live in.
-					Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.
-				</p>
-				<p class="mb-0"><a href="#" class="more dark">Learn More <span class="icon-arrow_forward"></span></a>
-				</p>
-
-
-			</div>
-			<!-- End Column 4 -->
-
-
-
 		</div>
 	</div>
 </div>
@@ -168,85 +121,31 @@ $team_data = mysqli_query($conn, "SELECT team.t_id, team.name, designation.name 
 
 					<div class="testimonial-slider">
 
-						<div class="item">
-							<div class="row justify-content-center">
-								<div class="col-lg-8 mx-auto">
+						<?php while ($row = mysqli_fetch_assoc($teams_data)) { ?>
+							<div class="item">
+								<div class="row justify-content-center">
+									<div class="col-lg-8 mx-auto">
 
-									<div class="testimonial-block text-center">
-										<blockquote class="mb-5">
-											<p>&ldquo;Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio
-												quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate
-												velit imperdiet dolor tempor tristique. Pellentesque habitant morbi
-												tristique senectus et netus et malesuada fames ac turpis egestas.
-												Integer convallis volutpat dui quis scelerisque.&rdquo;</p>
-										</blockquote>
+										<div class="testimonial-block text-center">
 
-										<div class="author-info">
-											<div class="author-pic">
-												<img src="images/person-1.png" alt="Maria Jones" class="img-fluid">
+											<blockquote class="mb-5">
+												<p>&ldquo;<?php echo $row['description']; ?>&rdquo;</p>
+											</blockquote>
+
+											<div class="author-info">
+												<div class="author-pic">
+													<img src="admin/team-images/<?php echo $row['image']; ?>"
+														alt="<?php echo $row['name']; ?>" class="img-fluid">
+												</div>
+												<h3 class="font-weight-bold"><?php echo $row['name']; ?></h3>
+												<span
+													class="position d-block mb-3"><?php echo $row['designation']; ?>.</span>
 											</div>
-											<h3 class="font-weight-bold">Maria Jones</h3>
-											<span class="position d-block mb-3">CEO, Co-Founder, XYZ Inc.</span>
 										</div>
 									</div>
-
 								</div>
 							</div>
-						</div>
-						<!-- END item -->
-
-						<div class="item">
-							<div class="row justify-content-center">
-								<div class="col-lg-8 mx-auto">
-
-									<div class="testimonial-block text-center">
-										<blockquote class="mb-5">
-											<p>&ldquo;Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio
-												quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate
-												velit imperdiet dolor tempor tristique. Pellentesque habitant morbi
-												tristique senectus et netus et malesuada fames ac turpis egestas.
-												Integer convallis volutpat dui quis scelerisque.&rdquo;</p>
-										</blockquote>
-
-										<div class="author-info">
-											<div class="author-pic">
-												<img src="images/person-1.png" alt="Maria Jones" class="img-fluid">
-											</div>
-											<h3 class="font-weight-bold">Maria Jones</h3>
-											<span class="position d-block mb-3">CEO, Co-Founder, XYZ Inc.</span>
-										</div>
-									</div>
-
-								</div>
-							</div>
-						</div>
-						<!-- END item -->
-
-						<div class="item">
-							<div class="row justify-content-center">
-								<div class="col-lg-8 mx-auto">
-
-									<div class="testimonial-block text-center">
-										<blockquote class="mb-5">
-											<p>&ldquo;Donec facilisis quam ut purus rutrum lobortis. Donec vitae odio
-												quis nisl dapibus malesuada. Nullam ac aliquet velit. Aliquam vulputate
-												velit imperdiet dolor tempor tristique. Pellentesque habitant morbi
-												tristique senectus et netus et malesuada fames ac turpis egestas.
-												Integer convallis volutpat dui quis scelerisque.&rdquo;</p>
-										</blockquote>
-
-										<div class="author-info">
-											<div class="author-pic">
-												<img src="images/person-1.png" alt="Maria Jones" class="img-fluid">
-											</div>
-											<h3 class="font-weight-bold">Maria Jones</h3>
-											<span class="position d-block mb-3">CEO, Co-Founder, XYZ Inc.</span>
-										</div>
-									</div>
-
-								</div>
-							</div>
-						</div>
+						<?php } ?>
 						<!-- END item -->
 
 					</div>
