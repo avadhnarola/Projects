@@ -84,21 +84,21 @@ $allRooms = $conn->query("select * from Room ORDER BY id DESC LIMIT 4");
 					<form id="bookingForm">
 						<div class="form-group">
 							<label for="guestName">Name</label>
-							<input type="text" class="form-control" id="guestName" required>
+							<input type="text" class="form-control" id="guestName" name="userNameBook" required>
 						</div>
 						<div class="form-group">
 							<label for="guestEmail">Email</label>
-							<input type="email" class="form-control" id="guestEmail" required>
+							<input type="email" class="form-control" id="guestEmail" name="emailBook" required>
 						</div>
 						<div class="form-group">
 							<label for="checkin">Check-in</label>
-							<input type="date" class="form-control" id="checkin" required>
+							<input type="date" class="form-control" id="checkin" name="check-inBook" required>
 						</div>
 						<div class="form-group">
 							<label for="checkout">Check-out</label>
-							<input type="date" class="form-control" id="checkout" required>
+							<input type="date" class="form-control" id="checkout" name="check-outBook" required>
 						</div>
-						<button type="submit" class="btn btn-primary">Confirm Booking</button>
+						<input type="submit" class="btn btn-primary" value="Confirm Booking">
 					</form>
 				</div>
 			</div>
@@ -816,55 +816,41 @@ $allRooms = $conn->query("select * from Room ORDER BY id DESC LIMIT 4");
 
 	<script>
 		$(document).ready(function () {
-			$('.book-now-btn').click(function (e) {
-				e.preventDefault();
-				var title = $(this).data('title');
-				var image = $(this).data('image');
+			$(document).ready(function () {
+				$('.book-now-btn').click(function (e) {
+					e.preventDefault();
+					var title = $(this).data('title');
+					var image = $(this).data('image');
 
-				$('#roomTitle').text(title);
-				$('#roomImage').attr('src', image);
-				$('#bookingModal').modal('show');
+					$('#roomTitle').text(title);
+					$('#roomImage').attr('src', image);
+					$('#bookingModal').modal('show');
+				});
 			});
 		});
-	</script>
 
-	<script>
+		document.body.addEventListener('click', function (e) {
+			if (e.target.classList.contains('book-now-btn')) {
+				e.preventDefault();
+				const title = e.target.getAttribute('data-title');
+				const image = e.target.getAttribute('data-image');
+
+				document.getElementById('roomTitle').textContent = title;
+				document.getElementById('roomImage').src = image;
+
+				$('#bookingModal').modal('show');
+			}
+		});
+
+
+
 		function loadRoom(id) {
 			fetch('get-room.php?id=' + id)
-				.then(res => res.text())
+				.then(response => response.text())
 				.then(html => {
 					document.getElementById('room-content').innerHTML = html;
-				});
+				})
+				.catch(err => console.error('Error loading room:', err));
 		}
-	</script>
-
-	<script>
-		document.addEventListener('DOMContentLoaded', function () {
-			// Use delegation for dynamically added buttons
-			document.body.addEventListener('click', function (e) {
-				if (e.target.classList.contains('book-now-btn')) {
-					e.preventDefault();
-
-					const title = e.target.getAttribute('data-title');
-					const image = e.target.getAttribute('data-image');
-
-					document.getElementById('roomTitle').textContent = title;
-					document.getElementById('roomImage').src = image;
-
-					$('#bookingModal').modal('show');
-				}
-			});
-		});
-	</script>
-
-	function loadRoom(id) {
-	fetch('get-room.php?id=' + id)
-	.then(response => response.text())
-	.then(html => {
-	document.getElementById('room-content').innerHTML = html;
-	})
-	.catch(err => console.error('Error loading room:', err));
-	}
-
 
 	</script>
